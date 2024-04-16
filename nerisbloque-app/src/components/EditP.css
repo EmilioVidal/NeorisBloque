@@ -1,0 +1,106 @@
+#arriba-edit{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#boton-atras{
+    width: 55px;
+    height: 55px;
+    background: none;
+    border: none; 
+    padding: 0; 
+}
+
+#boton-atras img{
+    width: 100%;
+    height: auto;
+}
+
+#div-info-edit{
+    display: flex;
+    height: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#div-info-edit img{
+    width: auto;
+    height: 150px;
+}
+
+#info-edit{
+    width: 500px;
+}
+
+#nombre-edit{
+    text-align: center;
+    background-color: #1B242A;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+}
+
+#cambiar-btn{
+    display: flex;
+    justify-content: center;
+}
+
+#cambiar-btn button{
+    border: none;
+    background: none;
+    margin: 20px;
+}
+
+#nivel-center{
+    display: flex;
+    justify-content: center; 
+}
+
+#nivel-edit{
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    gap: 10px;
+    align-items: center; 
+}
+
+progress{
+    margin-left: 20px;
+}
+
+#select-avatar,
+#accesorios-avatar{
+    text-align: center;
+}
+
+#avatares{
+    display: flex;
+    justify-content: center;
+}
+
+.av{
+    height: 400px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: #1B242A;
+    margin: 20px;
+}
+
+#accesorios{
+    display: flex;
+    justify-content: center;
+}
+
+.acc{
+    height: 200px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: #1B242A;
+    margin: 20px;
+}
+
+progress{
+    height: 40px;
+    width: 400px;
+}

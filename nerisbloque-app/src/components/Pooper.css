@@ -1,0 +1,16 @@
+#footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#footer p,
+#footer a{
+    font-size: 15px;
+}
+
+#footer a{
+    color: blueviolet;
+}

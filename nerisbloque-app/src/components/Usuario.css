@@ -1,0 +1,106 @@
+#arriba-us{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#boton-atras{
+    width: 55px;
+    height: 55px;
+    background: none;
+    border: none; 
+    padding: 0; 
+}
+
+#boton-atras img{
+    width: 100%;
+    height: auto;
+}
+
+#edit-p{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #ef3fa93a;
+    color: red;
+    border: none;
+}
+
+#div-info-us{
+    display: flex;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+#div-info-us img{
+    width: auto;
+    height: 250px;
+    align-items: center;
+}
+
+#info-us{
+    width: 500px;
+}
+
+#nombre-us{
+    text-align: center;
+    background-color: #1B242A;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+}
+
+#linea-us{
+    border: 2px solid #EF3FA9;
+    margin: 20px 0;
+}
+
+#puntos-us{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#zona-puntos{
+    display: flex;
+    justify-content: center;
+    height: 400px;
+}
+
+#zona-puntos h2{
+    color: #EF3FA9;
+    font-size: 35px;
+    margin: 0;
+}
+
+#puntos-us img{
+    width: 100%;
+}
+
+#puntos-us p{
+    display: inline-block;
+    background-color: yellow;
+    border-radius: 10px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0;
+    padding: 10px 40px;
+    font-weight: bold;
+}
+
+footer{
+    text-align: center;
+}
+
+#logoutbtn{
+    border: none;
+    border-radius: 10px;
+    border-radius: 10px;
+    background: none;
+}
+
+#logoutbtn img{
+    width: 100%;
+}
