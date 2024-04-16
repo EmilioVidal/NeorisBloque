@@ -44,7 +44,6 @@ export default function ButtonAppBar() {
               <Link to="/creaCuenta" className="link">Crea Cuenta</Link>
               <Link to="/adminLog" className="link">Admin LoogIn</Link>
               <Link to="/game" className="link">Game</Link>
-              <Link to="/score" className="link">The Score</Link>
               <Link to="/usuario" className="link">Usuario</Link>
               <Link to="/edit" className="link">Editar Perfil</Link>
               <Link to="/adminView" className="link">Admin View</Link>

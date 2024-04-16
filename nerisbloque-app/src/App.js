@@ -2,7 +2,6 @@ import Footer from "./components/Footer"
 import Bienvenido from './components/Bienvenido';
 import CreaCuenta from './components/CreaCuenta';
 import AdminLog from './components/AdminLog';
-import Score from './components/Score';
 import Usuario from './components/Usuario';
 import EditP from './components/EditP';
 import AdminView from './components/AdminView';
@@ -23,7 +22,6 @@ function App() {
                 <Route path="/bienvenido" element={<Bienvenido />} />
                 <Route path="/creaCuenta" element={<CreaCuenta />} />
                 <Route path="/game" element={<Game />} />
-                <Route path="/score" element={<Score />} />
                 <Route path="/adminLog" element={<AdminLog />} />
                 <Route path="/usuario" element={<Usuario />} />
                 <Route path="/edit" element={<EditP />} />
