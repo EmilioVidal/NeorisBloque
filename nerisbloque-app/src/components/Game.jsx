@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
+import './Game.css';
 
 const Game = ({count, plus, minus}) => {
   return (
@@ -32,7 +33,7 @@ const Game = ({count, plus, minus}) => {
               Rewards
             </Button>
             <Button sx={{ bgcolor: '#666666', width: '100px', height: '100px', color: 'white', margin: '10px'}}>
-              ajustes
+              Ajustes
             </Button>
       </div>
     </div>
