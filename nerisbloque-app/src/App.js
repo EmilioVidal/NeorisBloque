@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Footer from "./components/Footer"
 import AppBar from "./components/AppBar"
 import Bienvenido from './components/Bienvenido';
@@ -16,10 +15,6 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 
 function App() {
-    const[count, setCount] = useState(0);
-    const aumentar = () => {
-        setCount(count+1)
-    }
   return (
     <div>
         <BrowserRouter>
