@@ -1,7 +1,6 @@
 import React from 'react'
 import './Bienvenido.css'
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 function CreaCuenta() {
   return (

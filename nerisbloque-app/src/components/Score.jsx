@@ -3,7 +3,6 @@ import './Score.css'
 import userImage from '../img/User.png';
 import currency from '../img/Digital Currency Logo.png';
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 function Score() {
   return (
