@@ -23,19 +23,23 @@ const Game = ({count, plus, minus}) => {
             <Button sx={{ bgcolor: 'black', width: '200px', color: 'white', margin: '10px'}}>
                 Jugar
             </Button>
-            <Button sx={{ bgcolor: 'black', width: '200px', color: 'white', margin: '10px'}}>
+            <Button sx={{ bgcolor: 'black', width: '200px', color: 'white', margin: '10px'}}
+            href="/usuario">
                 Perfil
             </Button>
-            <Button sx={{ bgcolor: 'black', width: '200px', color: 'white', margin: '10px'}}>
+            <Button sx={{ bgcolor: 'black', width: '200px', color: 'white', margin: '10px'}}
+            href="/bienvenidos">
                 Salir
             </Button>
             </div>
         </Box>
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-                <Button sx={{ bgcolor: 'purple', width: '100px', height: '100px', color: 'white', margin: '10px'}}>
+                <Button sx={{ bgcolor: 'purple', width: '100px', height: '100px', color: 'white', margin: '10px'}}
+                variant="contained" href="/rewards">
                 Rewards
                 </Button>
-                <Button sx={{ bgcolor: '#666666', width: '100px', height: '100px', color: 'white', margin: '10px'}}>
+                <Button sx={{ bgcolor: '#666666', width: '100px', height: '100px', color: 'white', margin: '10px'}}
+                variant="contained" href="/edit">
                 Ajustes
                 </Button>
         </div>
