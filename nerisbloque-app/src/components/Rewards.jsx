@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Card, CardActionArea, CardMedia, Box } from '@mui/material';
 import TheScore from '../components/Score'
 import './Rewards.css';
+import AppBar from "../components/AppBar"
 
 const RewardCard = ({ image, alt }) => {
   const [isFlipped, setIsFlipped] = React.useState(false);
@@ -31,6 +32,7 @@ const RewardCard = ({ image, alt }) => {
 const Rewards = () => {
   return (
     <div>
+        <AppBar />
         <TheScore />
       <Box
         sx={{

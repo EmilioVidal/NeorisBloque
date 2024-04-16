@@ -3,12 +3,15 @@ import Backbtn from '../img/BackBTN.png'
 import userImage from '../img/User.png';
 import CambiarNombre from '../img/CMbtn.png';
 import CambiarDatos from '../img/CDbtn.png';
+import AppBar from "../components/AppBar"
+
 
 import './EditP.css';
 
 function EditP() {
   return (
     <div>
+        <AppBar />
         <header>
             <div id = "arriba-edit">
                 <button type='button' id='boton-atras'  onClick={() => console.log("hola")}><img src={Backbtn} alt="Flecha para atras" /></button>

@@ -1,5 +1,6 @@
 import React from 'react'
 import './Bienvenido.css'
+import { Link } from 'react-router-dom';
 
 function Bienvenido() {
   return (
@@ -23,9 +24,7 @@ function Bienvenido() {
             </label>
             <a href="">Olvide mi contraseña</a>
         </div>
-
-        <button className='inicialS'>Iniciar sesión</button>
-
+        <Link to="/game" className='inicialS'>Iniciar sesión</Link>
         <div id='lineaS'>
             <div className='linea-horizontal'></div>
             <span>ó</span>
@@ -33,8 +32,7 @@ function Bienvenido() {
         </div>
         
 
-
-        <button className='AdminB'>Administrador</button>
+        <Link to="/adminLog" className='AdminB'>Administrador</Link>
 
 
     </div>

@@ -1,5 +1,4 @@
 import Footer from "./components/Footer"
-import AppBar from "./components/AppBar"
 import Bienvenido from './components/Bienvenido';
 import CreaCuenta from './components/CreaCuenta';
 import AdminLog from './components/AdminLog';
@@ -19,7 +18,6 @@ function App() {
   return (
     <div>
         <BrowserRouter>
-            <AppBar />
             <Routes>
                 <Route path="/" element={<Bienvenido />} />
                 <Route path="/bienvenido" element={<Bienvenido />} />

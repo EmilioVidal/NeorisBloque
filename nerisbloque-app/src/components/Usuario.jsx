@@ -3,12 +3,14 @@ import Backbtn from '../img/BackBTN.png'
 import userImage from '../img/User.png';
 import LOGOUTbtn from '../img/LOGOUTbtn.png'
 import currency from '../img/Digital Currency Logo.png';
+import AppBar from "../components/AppBar"
 
 import './Usuario.css'
 
 function Usuario() {
   return (
     <div>
+        <AppBar />
         <header>
             <div id = "arriba-us">
                 <button type='button' id='boton-atras'  onClick={() => console.log("hola")}><img src={Backbtn} alt="Flecha para atras" /></button>

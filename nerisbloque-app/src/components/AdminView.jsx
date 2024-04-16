@@ -3,6 +3,8 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./AdminView.css"
+import AppBar from "../components/AppBar"
+
 
 function AdminView() {
     var settings = {
@@ -15,6 +17,7 @@ function AdminView() {
       };
   return (
     <div>
+    <AppBar />
       <div id='panel-Admin'>
         <h2>Panel Administración</h2>
         <div id='admin-info'>
