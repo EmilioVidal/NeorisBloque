@@ -1,5 +1,6 @@
 import React from 'react'
 import './Bienvenido.css'
+import { Link } from 'react-router-dom';
 
 
 function CreaCuenta() {
@@ -22,7 +23,7 @@ function CreaCuenta() {
             </div>
         </div>
 
-        <button className='inicialS'>Iniciar sesión</button>
+        <Link to="/game" className='inicialS'>Iniciar sesión</Link>
     </div>
   )
 }

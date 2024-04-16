@@ -2,6 +2,7 @@ import React from 'react'
 import './Bienvenido.css'
 import { Link } from 'react-router-dom';
 
+
 function Bienvenido() {
   return (
     <div id='loginP'>
