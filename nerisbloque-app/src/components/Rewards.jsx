@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Card, CardActionArea, CardMedia, Box } from '@mui/material';
+import TheScore from '../components/Score'
 import './Rewards.css';
 
 const RewardCard = ({ image, alt }) => {
@@ -10,6 +11,7 @@ const RewardCard = ({ image, alt }) => {
   };
 
   return (
+    
     <Card className={`card ${isFlipped ? 'flipped' : ''}`} onClick={handleFlip}>
       <CardActionArea>
         <div className="card-front">
@@ -29,6 +31,7 @@ const RewardCard = ({ image, alt }) => {
 const Rewards = () => {
   return (
     <div>
+        <TheScore />
       <Box
         sx={{
           borderRadius: '10px',
