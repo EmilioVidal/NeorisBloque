@@ -40,8 +40,6 @@ export default function ButtonAppBar() {
               onClick={toggleDrawer(false)}
               onKeyDown={toggleDrawer(false)}
             >
-              <Link to="/" className="link">Login</Link>
-              <Link to="/game" className="link">Game</Link>
               <Link to="/bienvenido" className="link">Bienvenidos</Link>
               <Link to="/creaCuenta" className="link">Crea Cuenta</Link>
               <Link to="/adminLog" className="link">Admin LoogIn</Link>
