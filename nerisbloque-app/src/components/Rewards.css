@@ -1,0 +1,19 @@
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  cursor: pointer;
+  transition: transform 0.5s;
+  margin: 10px;
+}
+
+.card-image {
+  backface-visibility: hiddens;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
