@@ -11,6 +11,7 @@ import Score from './components/Score';
 import Usuario from './components/Usuario';
 import EditP from './components/EditP';
 import AdminView from './components/AdminView';
+import Reward from './components/Rewards';
 import './App.css';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/usuario" element={<Usuario />} />
                 <Route path="/edit" element={<EditP />} />
                 <Route path="/adminView" element={<AdminView />} />
+                <Route path="/reward" element={<Reward />} />
                 <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
             <Footer />

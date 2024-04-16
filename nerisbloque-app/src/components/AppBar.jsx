@@ -49,6 +49,7 @@ export default function ButtonAppBar() {
               <Link to="/usuario" className="link">Usuario</Link>
               <Link to="/edit" className="link">Editar Perfil</Link>
               <Link to="/adminView" className="link">Admin View</Link>
+              <Link to="/rewards" className="link">Rewards</Link>
               <br />
             </Box>
           </Drawer>
