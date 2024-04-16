@@ -35,7 +35,7 @@ export default function ButtonAppBar() {
             onClose={toggleDrawer(false)}
           >
             <Box
-              sx={{ bgcolor: '#1976D2',textAlign:'center',padding:"10px" }} // Cambio aquí para el color de fondo
+              sx={{ bgcolor: '#1976D2',textAlign:'center',padding:"25px" }} // Cambio aquí para el color de fondo
               role="presentation"
               onClick={toggleDrawer(false)}
               onKeyDown={toggleDrawer(false)}
@@ -53,7 +53,7 @@ export default function ButtonAppBar() {
             </Box>
           </Drawer>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Mi App
+            Neoris
           </Typography>
         </Toolbar>
       </AppBar>
