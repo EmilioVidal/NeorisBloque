@@ -1,20 +1,26 @@
 import React from 'react'
 import Backbtn from '../img/BackBTN.png'
 import userImage from '../img/User.png';
-import LOGOUTbtn from '../img/LOGOUTbtn.png'
 import currency from '../img/Digital Currency Logo.png';
 import AppBar from "../components/AppBar"
+import { Link } from 'react-router-dom';
+
 
 import './Usuario.css'
 
 function Usuario() {
+    var  puntos = 999;
   return (
     <div>
         <AppBar />
         <header>
             <div id = "arriba-us">
-                <button type='button' id='boton-atras'  onClick={() => console.log("hola")}><img src={Backbtn} alt="Flecha para atras" /></button>
-                <button type='button' id='edit-p' onClick={() => console.log("adios")}>Editar Perfil</button>
+                <Link to='/game'>
+                    <button type='button' id='boton-atras'><img src={Backbtn} alt="Flecha para atras" /></button>
+                </Link>
+                <Link to="/edit">
+                    <button type='button' id='edit-p'>Editar Perfil</button>
+                </Link>
             </div>
         </header>
 
@@ -33,13 +39,20 @@ function Usuario() {
             <div id='puntos-us'>
                 <h2>Puntos</h2>
                 <img src={currency} alt="perro-puntos" />
-                <p id='num-puntos'>999</p>
+                <p id='num-puntos'>{puntos}</p>
             </div>
         </div>
-
-        <footer>
-            <button type='button' id='logoutbtn'><img src={LOGOUTbtn} alt="logout btn" onClick={() => console.log("adios")}/></button>
-        </footer>
+        <h3>Progreso en los cursos</h3>
+        <div id='nivel-center'>
+            <div id='nivel-edit'>
+                <h3>Cursos</h3>
+                <progress value="50" max="100"></progress>
+                <h3>Habilidades</h3>
+                <progress value="55" max="100"></progress>   
+            </div>
+            
+        </div>
+        
     </div>
   )
 }

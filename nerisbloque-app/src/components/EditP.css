@@ -53,18 +53,6 @@
     margin: 20px;
 }
 
-#nivel-center{
-    display: flex;
-    justify-content: center; 
-}
-
-#nivel-edit{
-    display: grid;
-    grid-template-columns: auto 1fr; 
-    gap: 10px;
-    align-items: center; 
-}
-
 progress{
     margin-left: 20px;
 }
@@ -103,4 +91,19 @@ progress{
 progress{
     height: 40px;
     width: 400px;
+}
+
+footer{
+    text-align: center;
+}
+
+#logoutbtn{
+    border: none;
+    border-radius: 10px;
+    border-radius: 10px;
+    background: none;
+}
+
+#logoutbtn img{
+    width: 100%;
 }

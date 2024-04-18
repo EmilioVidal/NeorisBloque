@@ -1,12 +1,16 @@
 import React from 'react'
 import './Bienvenido.css'
 import Footer from "../components/Footer"
+import noerisLogo from '../img/NEORIS logo dark.png'
 import { Link } from 'react-router-dom';
 
 
 function Bienvenido() {
   return (
     <div id='loginP'>
+        <div  id='Nlogo'>
+            <img src={noerisLogo} alt="" />
+        </div>
       <h2>Bienvenido</h2>
     
         <div className='input'>

@@ -86,21 +86,19 @@
     border-radius: 10px;
     text-align: center;
     margin: 0;
-    padding: 10px 40px;
+    padding: 10px 20px;
     font-weight: bold;
 }
 
-footer{
-    text-align: center;
+#nivel-center{
+    display: flex;
+    justify-content: center; 
 }
 
-#logoutbtn{
-    border: none;
-    border-radius: 10px;
-    border-radius: 10px;
-    background: none;
+#nivel-edit{
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    gap: 10px;
+    align-items: center; 
 }
 
-#logoutbtn img{
-    width: 100%;
-}
