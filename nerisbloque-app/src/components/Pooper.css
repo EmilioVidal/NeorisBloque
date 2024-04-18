@@ -7,10 +7,10 @@
 }
 
 #footer p,
-#footer a{
+#footer .Regi{
     font-size: 15px;
 }
 
-#footer a{
+#footer .Regi{
     color: blueviolet;
 }

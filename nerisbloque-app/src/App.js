@@ -1,4 +1,3 @@
-import Footer from "./components/Footer"
 import Bienvenido from './components/Bienvenido';
 import CreaCuenta from './components/CreaCuenta';
 import AdminLog from './components/AdminLog';
@@ -29,7 +28,6 @@ function App() {
                 <Route path="/rewards" element={<Rewards />} />
                 <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
-            <Footer />
         </BrowserRouter>
     </div>
   );

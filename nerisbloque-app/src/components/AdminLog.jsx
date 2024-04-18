@@ -1,5 +1,7 @@
 import React from 'react'
 import './Bienvenido.css'
+import { Link } from 'react-router-dom';
+
 
 function AdminLog() {
   return (
@@ -23,8 +25,7 @@ function AdminLog() {
             </label>
                 <a href="">Olvide mi contraseña</a>
             </div>
-
-        <button className='inicialS'>Iniciar sesión</button>
+        <Link to="/game" className='inicialS'>Iniciar sesión</Link>
     </div>
   )
 }
