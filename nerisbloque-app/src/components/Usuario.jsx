@@ -53,6 +53,23 @@ function Usuario() {
             
         </div>
         
+        <div id='select-avatar'>
+            <h3>Selección de Avatar</h3>
+            <div id='avatares'>
+                <div className='av'></div>
+                <div className='av'></div>
+            </div>
+        </div>
+        
+        <div id='accesorios-avatar'>
+            <h3>Accesorios</h3>
+            <div id='accesorios'>
+                <div className='acc'></div>
+                <div className='acc'></div>
+                <div className='acc'></div>
+            </div>
+        </div>
+            
     </div>
   )
 }

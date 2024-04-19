@@ -6,6 +6,7 @@ import EditP from './components/EditP';
 import AdminView from './components/AdminView';
 import Rewards from './components/Rewards';
 import Game from './components/Game';
+import AppVar from './components/AppBar'
 import './App.css';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
@@ -19,6 +20,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Bienvenido />} />
                 <Route path="/bienvenido" element={<Bienvenido />} />
+                <Route path="/bar" element={<AppVar />} />
                 <Route path="/creaCuenta" element={<CreaCuenta />} />
                 <Route path="/game" element={<Game />} />
                 <Route path="/adminLog" element={<AdminLog />} />

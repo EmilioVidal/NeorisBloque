@@ -102,3 +102,46 @@
     align-items: center; 
 }
 
+
+#select-avatar,
+#accesorios-avatar{
+    text-align: center;
+}
+
+#avatares{
+    display: flex;
+    justify-content: center;
+}
+
+.av{
+    height: 400px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: #1B242A;
+    margin: 20px;
+}
+
+#accesorios{
+    display: flex;
+    justify-content: center;
+}
+
+.acc{
+    height: 200px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: #1B242A;
+    margin: 20px;
+}
+
+
+
+progress{
+    margin-left: 20px;
+}
+
+
+progress{
+    height: 40px;
+    width: 400px;
+}
