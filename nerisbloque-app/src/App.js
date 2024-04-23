@@ -17,7 +17,6 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 function App() {
     const [profileImageUrl, setProfileImageUrl] = useState(userImage);
-    const [nombreU, setNombreU] = useState(nombre);
 
 
   return (
