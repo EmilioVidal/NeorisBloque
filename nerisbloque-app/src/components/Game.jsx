@@ -4,10 +4,10 @@ import Box from '@mui/material/Box';
 import './Game.css';
 import AppBar from "../components/AppBar"
 
-const Game = ({count, plus, minus}) => {
+const Game = ({count, plus, minus, profileImageUrl}) => {
   return (
     <div>
-        <AppBar />
+        <AppBar profileImageUrl={profileImageUrl} />
         <div className="gamepage">  
         <h1>Game</h1>
         <Box sx={{ 

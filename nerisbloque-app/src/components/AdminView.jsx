@@ -3,11 +3,11 @@ import "./AdminView.css"
 import AppBar from "../components/AppBar"
 
 
-function AdminView() {
+function AdminView({profileImageUrl}) {
  
   return (
     <div>
-    <AppBar />
+    <AppBar profileImageUrl={profileImageUrl} />
       <div id='panel-Admin'>
         <h2>Panel Administración</h2>
         <div id='admin-info'>

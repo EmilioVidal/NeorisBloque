@@ -1,6 +1,5 @@
 import React from 'react'
 import Backbtn from '../img/BackBTN.png'
-import userImage from '../img/User.png';
 import currency from '../img/Digital Currency Logo.png';
 import AppBar from "../components/AppBar"
 import ProfileAvatar from './ProfileAvatar';
@@ -11,9 +10,11 @@ import './Usuario.css'
 
 function Usuario({ profileImageUrl }) {
     var  puntos = 999;
+    var cursosV = 50;
+    var hamilidadesV = 60;
   return (
     <div>
-        <AppBar />
+        <AppBar profileImageUrl={profileImageUrl} />
         <header>
             <div id = "arriba-us">
                 <Link to='/game'>
@@ -49,9 +50,9 @@ function Usuario({ profileImageUrl }) {
         <div id='nivel-center'>
             <div id='nivel-edit'>
                 <h3>Cursos</h3>
-                <progress value="50" max="100"></progress>
+                <progress value={cursosV} max="100"></progress>
                 <h3>Habilidades</h3>
-                <progress value="55" max="100"></progress>   
+                <progress value={hamilidadesV} max="100"></progress>   
             </div>
             
         </div>
