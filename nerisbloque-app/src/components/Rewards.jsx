@@ -4,7 +4,7 @@ import TheScore from '../components/Score'
 import './Rewards.css';
 import AppBar from "../components/AppBar"
 
-const RewardCard = ({ image, alt }) => {
+const RewardCard = ({ image, alt}) => {
   const [isFlipped, setIsFlipped] = React.useState(false);
 
   const handleFlip = () => {
@@ -29,10 +29,10 @@ const RewardCard = ({ image, alt }) => {
   );
 };
 
-const Rewards = () => {
+const Rewards = ({profileImageUrl}) => {
   return (
     <div>
-        <AppBar />
+        <AppBar profileImageUrl={profileImageUrl} />
         <TheScore />
       <Box
         sx={{

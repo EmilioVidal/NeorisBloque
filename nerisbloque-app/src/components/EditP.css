@@ -66,6 +66,70 @@
     border-radius: 10px;
     color: white;
     padding: 10px;
+    font-size: 24px;
+}
+
+#inputNombre{
+    display: flex;
+    margin: 24px 0;
+}
+#input-newName{
+    text-align: center;
+    border: solid #1B242A 3px;
+    background-color: #37434b;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    width: 500px;
+    font-size: 24px;
+
+}
+#inputBtn-name{
+    width: 150px;
+    height: 40px;
+    align-self: center;
+    background-color: #EF3FA9;
+    border: #1B242A;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+#inputBtn-name:hover{
+    background-color: rgba(230, 76, 168, 0.733);
+    
+}
+
+#inputDatos{
+    display: flex;
+    margin: 24px 0;
+    width: 700px;
+}
+
+#input-newDatos{
+    text-align: left;
+    border: solid #1B242A 3px;
+    background-color: #bcc1c4;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    width: 475px;
+    height: 100px;
+    font-size: 24px;
+}
+
+#inputBtn-datos{
+    width: 150px;
+    height: 40px;
+    align-self: center;
+    background-color: #EF3FA9;
+    border: #1B242A;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+#inputBtn-datos:hover{
+    background-color: rgba(230, 76, 168, 0.733);
+    
 }
 
 #cambiar-btn{
