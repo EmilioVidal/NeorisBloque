@@ -6,7 +6,9 @@ import EditP from './components/EditP';
 import AdminView from './components/AdminView';
 import Rewards from './components/Rewards';
 import Game from './components/Game';
-import AppVar from './components/AppBar'
+import AppBar from './components/AppBar'
+import React, {useState} from 'react';
+import userImage from './img/User.png';
 import './App.css';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
@@ -14,18 +16,20 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 
 function App() {
+    const [profileImageUrl, setProfileImageUrl] = useState(userImage);
+
   return (
     <div>
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Bienvenido />} />
                 <Route path="/bienvenido" element={<Bienvenido />} />
-                <Route path="/bar" element={<AppVar />} />
+                <Route path="/bar" element={<AppBar profileImageUrl={profileImageUrl} />} />
                 <Route path="/creaCuenta" element={<CreaCuenta />} />
                 <Route path="/game" element={<Game />} />
                 <Route path="/adminLog" element={<AdminLog />} />
-                <Route path="/usuario" element={<Usuario />} />
-                <Route path="/edit" element={<EditP />} />
+                <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} />} />
+                <Route path="/edit" element={<EditP setProfileImageUrl={setProfileImageUrl} />} />
                 <Route path="/adminView" element={<AdminView />} />
                 <Route path="/rewards" element={<Rewards />} />
                 <Route path="/*" element={<Navigate to="/" />} />

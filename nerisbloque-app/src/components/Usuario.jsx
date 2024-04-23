@@ -3,12 +3,13 @@ import Backbtn from '../img/BackBTN.png'
 import userImage from '../img/User.png';
 import currency from '../img/Digital Currency Logo.png';
 import AppBar from "../components/AppBar"
+import ProfileAvatar from './ProfileAvatar';
 import { Link } from 'react-router-dom';
 
 
 import './Usuario.css'
 
-function Usuario() {
+function Usuario({ profileImageUrl }) {
     var  puntos = 999;
   return (
     <div>
@@ -25,7 +26,9 @@ function Usuario() {
         </header>
 
         <div id='div-info-us'>
-            <img src={userImage} alt="Imagen de Usuario" />
+            <div id='foto-P' style={{ width:"400px", height:"auto"}}>
+                <ProfileAvatar imageUrl={profileImageUrl} />
+            </div>
             <div id='info-us'>
                 <h3 id='nombre-us'>Nombre de Usuario</h3>
                 <span id='datos-us'>
