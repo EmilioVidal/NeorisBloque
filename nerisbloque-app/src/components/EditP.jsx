@@ -10,7 +10,7 @@ import ProfileAvatar from "./ProfileAvatar";
 import './EditP.css';
 import { Link } from 'react-router-dom';
 
-function EditP({ profileImageUrl, setProfileImageUrl, nombreU}) {
+function EditP({ profileImageUrl, setProfileImageUrl}) {
     var nombre = "Pedro Sanches Sanches";
     var Datos = "Bro ipsum dolor sit amet twister wheels taco glove, gear jammer park derailleur stunt shreddin giblets couloir sucker hole pow huck.";
 
