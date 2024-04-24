@@ -24,6 +24,7 @@ function EditP({ profileImageUrl, setProfileImageUrl, nombreU, setNombreU, datos
         const newImageUrl = URL.createObjectURL(event.target.files[0]);
         console.log('New image URL:', newImageUrl);
         setProfileImageUrl(newImageUrl);
+        //aqui se podria actializar la foto en la base de datos
     };
 
     const handleEditImageClick = () => {
@@ -106,7 +107,7 @@ function EditP({ profileImageUrl, setProfileImageUrl, nombreU, setNombreU, datos
 
             <div id='cambiar-btn'>
                 <button onClick={handleNameEditClick} type='button'><img src={CambiarNombre} alt="Boton para cambiar nombre" /></button>
-                <button onClick={handleDatosEditClick} type='button'> <img src={CambiarDatos} alt="Boton para cambiar datos" /></button>
+                <button onClick={handleDatosEditClick} type='button'><img src={CambiarDatos} alt="Boton para cambiar datos" /></button>
             </div>
 
             <footer>
