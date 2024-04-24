@@ -1,19 +1,95 @@
-.card-container {
+.page.card-1-page {
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards {
+  display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .card {
-  cursor: pointer;
-  transition: transform 0.5s;
-  margin: 10px;
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 10px;
 }
 
-.card-image {
-  backface-visibility: hiddens;
+.card-1-page .card header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 }
 
-.flipped {
+.card-1-page .back {
   transform: rotateY(180deg);
 }
+
+.card-1-page input {
+  position: absolute;
+  scale: 0;
+}
+
+.card-1-page input:checked ~ .card .back {
+  transform: rotateY(0);
+}
+
+.card-1-page input:checked ~ .card .front {
+  transform: rotateY(-180deg);
+}
+
+.card {
+  position: relative;
+  width: 140px; /* Ancho de la tarjeta */
+  height: 200px; /* Alto de la tarjeta */
+  border-radius: 10px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card .front,
+.card .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backface-visibility: hidden;
+  background-color: #000000; /* Color de fondo */
+  border-radius: 10px;
+  transition: transform 0.6s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card img {
+  width: 80%;
+  height: auto; /* Ajusta automáticamente la altura según el ancho */
+  border-radius: 10px;
+}
+
+.card .conten {
+  display: flex; /* Mostrar elementos en una fila */
+  flex-direction: row; /* Dirección de la fila */
+  align-items: center; /* Alinear verticalmente los elementos */
+  justify-content: center; /* Alinear horizontalmente los elementos */
+  text-align: center;
+  margin-top: 10px; /* Margen superior */
+}
+
+.card .conten p {
+  color: #fff; /* Texto blanco */
+  margin-right: 5px; /* Margen derecho entre el precio y la imagen de la moneda */
+}
+
+.conten img#moneda {
+  width: 20px; /* Ajusta el tamaño de la imagen de la moneda */
+  height: auto;
+}
+

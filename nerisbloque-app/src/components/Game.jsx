@@ -2,9 +2,10 @@ import React from "react";
 import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
 import './Game.css';
+import { Link } from 'react-router-dom';
 import AppBar from "../components/AppBar"
 
-const Game = ({count, plus, minus, profileImageUrl}) => {
+const Game = ({profileImageUrl}) => {
   return (
     <div>
         <AppBar profileImageUrl={profileImageUrl} />
@@ -20,28 +21,36 @@ const Game = ({count, plus, minus, profileImageUrl}) => {
             borderRadius: '10px',
         }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Link to={"/game"}>
+              <Button sx={{ bgcolor: 'black', width: '200px', color: 'white', margin: '10px'}}>
+                  Jugar
+              </Button>
+            </Link>
+            <Link to={"/usuario"}>
             <Button sx={{ bgcolor: 'black', width: '200px', color: 'white', margin: '10px'}}>
-                Jugar
-            </Button>
-            <Button sx={{ bgcolor: 'black', width: '200px', color: 'white', margin: '10px'}}
-            href="/usuario">
                 Perfil
             </Button>
-            <Button sx={{ bgcolor: 'black', width: '200px', color: 'white', margin: '10px'}}
-            href="/bienvenidos">
+            </Link>
+            <Link to={"/bienvenidos"}>
+            <Button sx={{ bgcolor: 'black', width: '200px', color: 'white', margin: '10px'}}>
                 Salir
             </Button>
+            </Link>
             </div>
         </Box>
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-                <Button sx={{ bgcolor: 'purple', width: '100px', height: '100px', color: 'white', margin: '10px'}}
-                variant="contained" href="/rewards">
-                Rewards
-                </Button>
+                <Link to={"/rewards"}>
+                  <Button sx={{ bgcolor: 'purple', width: '100px', height: '100px', color: 'white', margin: '10px'}}
+                  variant="contained" >
+                  Rewards
+                  </Button>
+                </Link>
+                <Link to={"/edit"}>
                 <Button sx={{ bgcolor: '#666666', width: '100px', height: '100px', color: 'white', margin: '10px'}}
-                variant="contained" href="/edit">
+                variant="contained">
                 Ajustes
                 </Button>
+                </Link>
         </div>
       </div>
     </div>

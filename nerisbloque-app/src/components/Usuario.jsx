@@ -3,15 +3,25 @@ import Backbtn from '../img/BackBTN.png'
 import currency from '../img/Digital Currency Logo.png';
 import AppBar from "../components/AppBar"
 import ProfileAvatar from './ProfileAvatar';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import { Link } from 'react-router-dom';
-
+import NombreUsuario from "./NombreUsuario";
 
 import './Usuario.css'
+import DatosUsuario from './DatosUsuario';
 
-function Usuario({ profileImageUrl }) {
-    var  puntos = 999;
-    var cursosV = 50;
-    var hamilidadesV = 60;
+
+function Usuario({ profileImageUrl, nombreU, datosU }) {
+    let puntos = 999;
+    let hamilidadesV = 60;
+    //estos son cuantos cursos se han completado de cada cosa
+    let percentageTotal = 4;
+    let percentagePE = 2;
+    let percentageGC = 1;
+    let percentageGAS = 1;
+
+
   return (
     <div>
         <AppBar profileImageUrl={profileImageUrl} />
@@ -31,47 +41,126 @@ function Usuario({ profileImageUrl }) {
                 <ProfileAvatar imageUrl={profileImageUrl} />
             </div>
             <div id='info-us'>
-                <h3 id='nombre-us'>Nombre de Usuario</h3>
-                <span id='datos-us'>
-                Bro ipsum dolor sit amet twister wheels taco glove, gear jammer park derailleur stunt shreddin giblets couloir sucker hole pow huck. Endo ripper face shots, smear skid rail saddle cornice butter backside. Spin bonk big ring tele pow gnar, white room gapers steeps pipe brain bucket flow T-bar. Saddle chain suck skinny gear jammer crank. Switch heli newschooler spin, brain bucket white room sucker hole table top shreddin line piste gnar rock-ectomy. Grom ACL bunny slope park gondy, couloir rig.
-                </span>
+                <NombreUsuario nombre={nombreU}/>
+                <DatosUsuario datos={datosU}/>
             </div>
         </div>
         <div id='linea-us'></div>
 
-        <div id='zona-puntos'>
-            <div id='puntos-us'>
-                <h2>Puntos</h2>
-                <img src={currency} alt="perro-puntos" />
-                <p id='num-puntos'>{puntos}</p>
+        <h3 id='progresoT'>Progreso</h3>
+        <div id='progreso'> 
+            <div id='circulos'>
+
+                <div className='circP'>
+                    <h3 className='title-curso'>En todos los cursos</h3>
+                    <CircularProgressbar id="porc-toal"
+                        value={Math.round((percentageTotal/7)*100)}
+                        text={`${Math.round((percentageTotal/7)*100)}%`}
+                        styles={buildStyles({
+                            // Rotation of path and trail, in number of turns (0-1)
+                            rotation: 0,
+                            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                            strokeLinecap: 'round',
+                            // Text size
+                            textSize: '16px',
+                            // How long animation takes to go from one percentage to another, in seconds
+                            pathTransitionDuration: 0.5,
+                            // Colors
+                            pathColor: `rgba(62, 152, 199, ${Math.round((percentageTotal/7)*100) / 100})`,
+                            textColor: '#f88',
+                            trailColor: '#d6d6d6',
+                            backgroundColor: '#3e98c7',
+                        })}
+                    />
+                </div>
+                <div className='circP'>
+                    <h3 className='title-curso'>Promt Engineering</h3>
+                    <CircularProgressbar id="porc-PE"
+                            value={Math.round((percentagePE/3)*100)}
+                            text={`${Math.round((percentagePE/3)*100)}%`}
+                            styles={buildStyles({
+                                // Rotation of path and trail, in number of turns (0-1)
+                                rotation: 0,
+                                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                                strokeLinecap: 'round',
+                                // Text size
+                                textSize: '16px',
+                                // How long animation takes to go from one percentage to another, in seconds
+                                pathTransitionDuration: 0.5,
+                                // Colors
+                                pathColor: `rgba(62, 152, 199, ${Math.round((percentagePE/3)*100) / 100})`,
+                                textColor: '#f88',
+                                trailColor: '#d6d6d6',
+                                backgroundColor: '#3e98c7',
+                            })}
+                            />
+                </div>
+                <div className='circP'>
+                    <h3 className='title-curso'>GitHub Copilot</h3>
+                    <CircularProgressbar
+                            value={Math.round((percentageGC/2)*100)}
+                            text={`${Math.round((percentageGC/2)*100)}%`}
+                            styles={buildStyles({
+                                // Rotation of path and trail, in number of turns (0-1)
+                                rotation: 0,
+                                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                                strokeLinecap: 'round',
+                                // Text size
+                                textSize: '16px',
+                                // How long animation takes to go from one percentage to another, in seconds
+                                pathTransitionDuration: 0.5,
+                                // Colors
+                                pathColor: `rgba(62, 152, 199, ${Math.round((percentageGC/2)*100) / 100})`,
+                                textColor: '#f88',
+                                trailColor: '#d6d6d6',
+                                backgroundColor: '#3e98c7',
+                            })}
+                            />
+                </div>
+                <div className='circP'>
+                    <h3 className='title-curso'>GitHub Advanced Security</h3>
+                    <CircularProgressbar
+                            value={Math.round((percentageGAS/2)*100)}
+                            text={`${Math.round((percentageGAS/2)*100)}%`}
+                            styles={buildStyles({
+                                // Rotation of path and trail, in number of turns (0-1)
+                                rotation: 0,
+                                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                                strokeLinecap: 'round',
+                                // Text size
+                                textSize: '16px',
+                                // How long animation takes to go from one percentage to another, in seconds
+                                pathTransitionDuration: 0.5,
+                                // Colors
+                                pathColor: `rgba(62, 152, 199, ${Math.round((percentageGAS/2)*100) / 100})`,
+                                textColor: '#f88',
+                                trailColor: '#d6d6d6',
+                                backgroundColor: '#3e98c7',
+                            })}
+                            />
+                </div>
+
+
+            </div>
+
+            <div id="linea-vertical"></div>
+
+            <div id='zona-puntos'>
+                <div id='puntos-us'>
+                    <h2>Puntos</h2>
+                    <img src={currency} alt="perro-puntos" />
+                    <p id='num-puntos'>{puntos}</p>
+                </div>
             </div>
         </div>
-        <h3>Progreso en los cursos</h3>
+        <div id='linea-us' style={{ marginTop:"-100px"}}></div>
+
         <div id='nivel-center'>
             <div id='nivel-edit'>
-                <h3>Cursos</h3>
-                <progress value={cursosV} max="100"></progress>
-                <h3>Habilidades</h3>
+                <h3>Nivel</h3>
                 <progress value={hamilidadesV} max="100"></progress>   
             </div>
             
-        </div>
-        
-        <div id='select-avatar'>
-            <h3>Selección de Avatar</h3>
-            <div id='avatares'>
-                <div className='av'></div>
-                <div className='av'></div>
-            </div>
-        </div>
-        
-        <div id='accesorios-avatar'>
-            <h3>Accesorios</h3>
-            <div id='accesorios'>
-                <div className='acc'></div>
-                <div className='acc'></div>
-                <div className='acc'></div>
-            </div>
         </div>
             
     </div>

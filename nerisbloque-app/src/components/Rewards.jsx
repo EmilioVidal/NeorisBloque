@@ -1,39 +1,27 @@
 import * as React from 'react';
-import { Card, CardActionArea, CardMedia, Box } from '@mui/material';
-import TheScore from '../components/Score'
 import './Rewards.css';
-import AppBar from "../components/AppBar"
+import currency from '../img/Digital Currency Logo.png';
+import cabra from '../img/cabra.png';
+import AppBar from './AppBar';
+import TheScore from './Score';
+import Box from '@mui/material/Box';
 
-const RewardCard = ({ image, alt}) => {
-  const [isFlipped, setIsFlipped] = React.useState(false);
+const cards = [
+  { name: 'Regalo 1', price: '10' },
+  { name: 'Regalo 2', price: '20' },
+  { name: 'Regalo 3', price: '15' },
+  { name: 'Regalo 4', price: '30' },
+  { name: 'Regalo 5', price: '25' },
+  { name: 'Regalo 6', price: '12' },
+];
 
-  const handleFlip = () => {
-    setIsFlipped(!isFlipped);
-  };
-
-  return (
-    
-    <Card className={`card ${isFlipped ? 'flipped' : ''}`} onClick={handleFlip}>
-      <CardActionArea>
-        <div className="card-front">
-          <CardMedia
-            component="img"
-            height="140"
-            image={image}
-            alt={alt}
-            className="card-image"
-          />
-        </div>
-      </CardActionArea>
-    </Card>
-  );
-};
 
 const Rewards = ({profileImageUrl}) => {
+
   return (
     <div>
-        <AppBar profileImageUrl={profileImageUrl} />
-        <TheScore />
+      <AppBar profileImageUrl={profileImageUrl} />
+        <TheScore profileImageUrl={profileImageUrl} />
       <Box
         sx={{
           borderRadius: '10px',
@@ -46,17 +34,30 @@ const Rewards = ({profileImageUrl}) => {
       >
         <h1 style={{ color: 'white' }}>Rewards</h1>
       </Box>
-      <div className="card-container">
-        {/* Uso de RewardCard */}
-        <RewardCard image="./Gift.jpg" alt="Gift 1" />
-        <RewardCard image="./Gift.jpg" alt="Gift 2" />
-        <RewardCard image="./Gift.jpg" alt="Gift 3" />
-        <RewardCard image="./Gift.jpg" alt="Gift 4" />
-        <RewardCard image="./Gift.jpg" alt="Gift 5" />
-        <RewardCard image="./Gift.jpg" alt="Gift 6" />
-        {/* Puedes agregar más tarjetas según sea necesario */}
+    <section className="page card-1-page">
+      <div className="cards">
+        {cards.map((card) => (
+          <label key={card.name} id={card.name}>
+            <input type="checkbox" />
+            <div className="card">
+              <div className="front">
+                <img src="./Gift.jpg" alt="regalo" id='imagen' />
+                <div className='conten'>
+                  <p>{card.price}</p>
+                  <img id='moneda' src={currency} alt="moneda" />
+                </div>
+              </div>
+              <div className="back">
+                <header>
+                  <img src={cabra} alt="cabra" id='cabra' />
+                </header>
+              </div>
+            </div>
+          </label>
+        ))}
       </div>
-    </div>
+    </section>
+  </div>
   );
 };
 
