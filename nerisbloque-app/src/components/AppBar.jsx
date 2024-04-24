@@ -51,8 +51,8 @@ function ResponsiveAppBar({ profileImageUrl }) {
         <Toolbar disableGutters>
             
             <img src={NeorisPP} alt="Neoris logo" style={{ width: "200px", marginRight: "auto", cursor: "pointer" }} onClick={() => mainP()} />
-            <Box>
-                <Link to={"/upload"}>POPO</Link>
+            <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'end', marginRight:"50px", textAlign:"center" }}>
+                <Link to={"/upload"} style={{fontSize:"20px"}}>Mandar Avances</Link>
             </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

@@ -18,9 +18,14 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 
 function App() {
-    var nombre= "Pedro pica Pierda";
-    var datos = "Bro ipsum dolor sit amet twister wheels taco glove, gear jammer park derailleur stunt shreddin giblets couloir sucker hole pow huck.";
+    let nombre = "Pedro pica Piedra"
+    let datos = "Bro ipsum dolor sit amet twister wheels taco glove, gear jammer park derailleur stunt shreddin giblets couloir sucker hole pow huck.";
+
     const [profileImageUrl, setProfileImageUrl] = useState(userImage);
+    const [nombreU, setNombreU] = useState(nombre);
+    const [datosU, setDatosU] = useState(datos);
+
+
 
 
   return (
@@ -33,8 +38,8 @@ function App() {
                 <Route path="/creaCuenta" element={<CreaCuenta />} />
                 <Route path="/game" element={<Game profileImageUrl={profileImageUrl} />} />
                 <Route path="/adminLog" element={<AdminLog />} />
-                <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} />} />
-                <Route path="/edit" element={<EditP profileImageUrl={profileImageUrl} setProfileImageUrl={setProfileImageUrl}  />} />
+                <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} nombreU={nombreU} datosU={datosU}/>} />
+                <Route path="/edit" element={<EditP profileImageUrl={profileImageUrl} setProfileImageUrl={setProfileImageUrl} nombreU={nombreU} setNombreU={setNombreU} datosU={datosU} setDatosU={setDatosU}/>} />
                 <Route path="/adminView" element={<AdminView profileImageUrl={profileImageUrl}/>} />
                 <Route path="/rewards" element={<Rewards profileImageUrl={profileImageUrl}/>} />
                 <Route path="/upload" element={<Upload profileImageUrl={profileImageUrl}/>} />

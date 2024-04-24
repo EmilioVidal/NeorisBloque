@@ -77,12 +77,15 @@
 
 #progreso {
     display: flex;
-    align-items: center; /* Para alinear verticalmente los elementos */
-    justify-content: space-between; /* Para distribuir los elementos a lo largo del contenedor */
-    width: 100%; /* Ajusta el ancho según sea necesario */
-    max-width: 800px; /* Opcional: define un ancho máximo para el contenedor */
     margin: 0 auto; /* Centra el contenedor horizontalmente */
     padding: 20px; /* Agrega espaciado alrededor del contenido */
+    margin-bottom: 100px;
+}
+
+#progresoT{
+    text-align: center;
+    font-size: 35px;
+    color: #1B242A;
 }
 
 #circulos,
@@ -91,19 +94,41 @@
 }
 
 #linea-vertical {
-    height: 100px; /* Altura de la línea */
     width: 2px; /* Ancho de la línea */
-    background-color: #000; /* Color de la línea */
+    border: 2px solid #EF3FA9;
+    background-color: #EF3FA9; /* Color de la línea */
+}
+
+#circulos{
+    display: flex;
+    margin-right: 100px;
 }
 
 .circP {
     display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     width: 200px;
+    margin: 0 40px;
 }
 
+.title-curso{
+    text-align: center;
+    margin-bottom: 10px;
+    color: #1B242A;
+}
+
+#puntos-us h2{
+    margin-bottom: 50px;
+    font-size: 50px;
+}
 
 #puntos-us img{
     width: 100%;
+}
+
+#zona-puntos{
+    align-items: center;
 }
 
 #puntos-us p{
@@ -112,9 +137,10 @@
     border-radius: 10px;
     border-radius: 10px;
     text-align: center;
-    margin: 0;
+    margin: 10px 0;
     padding: 10px 20px;
     font-weight: bold;
+    font-size: 20px;
 }
 
 #nivel-center{
@@ -128,40 +154,6 @@
     gap: 10px;
     align-items: center; 
 }
-
-
-#select-avatar,
-#accesorios-avatar{
-    text-align: center;
-}
-
-#avatares{
-    display: flex;
-    justify-content: center;
-}
-
-.av{
-    height: 400px;
-    width: 250px;
-    border-radius: 10px;
-    background-color: #1B242A;
-    margin: 20px;
-}
-
-#accesorios{
-    display: flex;
-    justify-content: center;
-}
-
-.acc{
-    height: 200px;
-    width: 250px;
-    border-radius: 10px;
-    background-color: #1B242A;
-    margin: 20px;
-}
-
-
 
 progress{
     margin-left: 20px;
