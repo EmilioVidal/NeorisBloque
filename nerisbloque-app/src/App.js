@@ -9,6 +9,7 @@ import Game from './components/Game';
 import ResponsiveAppBar from './components/AppBar'
 import React, {useState} from 'react';
 import userImage from './img/User.png';
+import Score from './components/Score';
 import './App.css';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 

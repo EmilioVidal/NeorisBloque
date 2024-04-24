@@ -6,8 +6,6 @@ import AppBar from './AppBar';
 import TheScore from './Score';
 import Box from '@mui/material/Box';
 
-const profileImageUrl = 'https://www.w3schools.com/howto/img_avatar.png';
-
 const cards = [
   { name: 'Regalo 1', price: '10' },
   { name: 'Regalo 2', price: '20' },
@@ -18,12 +16,12 @@ const cards = [
 ];
 
 
-const Rewards = () => {
+const Rewards = ({profileImageUrl}) => {
 
   return (
     <div>
       <AppBar profileImageUrl={profileImageUrl} />
-        <TheScore />
+        <TheScore profileImageUrl={profileImageUrl} />
       <Box
         sx={{
           borderRadius: '10px',
