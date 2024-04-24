@@ -22,11 +22,11 @@
 
 
 .input {
-    display: grid;
+    display: flex; /* Cambia de grid a flex */
+    flex-direction: column; /* Alinea los elementos en columnas */
     padding: 20px;
-    grid-template-rows: auto auto;
-    grid-gap: 10px;
     justify-content: center;
+    align-items: center; /* Centra verticalmente */
 }
 
 .input input{
@@ -34,6 +34,7 @@
     height: 35px;
     border-radius: 10px;
     border: 0.4px solid black;
+    margin-bottom: 10px; /* Agrega un margen inferior para separar los campos */
 }
 
 .input textarea{
@@ -44,8 +45,6 @@
 }
 
 .input p {
-    justify-self: center;
-    align-self: center;
     color: #AF4D96;
     margin: 0;
     margin-bottom: 5px;
