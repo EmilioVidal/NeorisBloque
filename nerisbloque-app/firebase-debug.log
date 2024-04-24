@@ -1,0 +1,13 @@
+[debug] [2024-04-24T21:33:32.527Z] ----------------------------------------------------------------------
+[debug] [2024-04-24T21:33:32.530Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\famil\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js use --add
+[debug] [2024-04-24T21:33:32.530Z] CLI Version:   13.7.3
+[debug] [2024-04-24T21:33:32.530Z] Platform:      win32
+[debug] [2024-04-24T21:33:32.531Z] Node Version:  v20.11.1
+[debug] [2024-04-24T21:33:32.531Z] Time:          Wed Apr 24 2024 15:33:32 GMT-0600 (Central Standard Time)
+[debug] [2024-04-24T21:33:32.531Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-04-24T21:33:32.588Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-24T21:33:32.588Z] > authorizing via signed-in user (neoristeam5@gmail.com)
+[debug] [2024-04-24T21:33:32.591Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2024-04-24T21:33:32.979Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2024-04-24T21:33:32.980Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
