@@ -40,13 +40,24 @@ function CreaCuenta() {
       <h2>Crea tu cuenta</h2>
       <form onSubmit={handleRegister}>
         <div className='input'>
+            <div>
+            <p>Nombre Completo</p>
+            <input name="nombreCompletoU" type="text" className="form-control" placeholder="Emilio Vidal Cavazos Páez" />
+          </div>
           <div>
+            <p>Datos del Usuario</p>
+            <textarea name="datos" type="text" className="form-control"  placeholder="Trabajdor desde el 2020 en el area de FullStack tengo 19 años0"></textarea>
+          </div>
+          <div>
+            <p>Datos del Usuario</p>
             <input name="email" type="text" className="form-control" id="emailInp" placeholder="name@example.com" />
           </div>
           <div>
+            <p>Contraseña</p>
             <input name="password" type="password" className="form-control" id="passwordInp" placeholder="Password" />
           </div>
           <div>
+            <p>Confirma Contraseña</p>
             <input name="confirmPassword" type="password" className="form-control" placeholder="Repite tu contraseña" />
           </div>
         </div>

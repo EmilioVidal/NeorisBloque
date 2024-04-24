@@ -22,17 +22,19 @@ function App() {
     let datos = "Bro ipsum dolor sit amet twister wheels taco glove, gear jammer park derailleur stunt shreddin giblets couloir sucker hole pow huck.";
 
     const [profileImageUrl, setProfileImageUrl] = useState(userImage);
+
+
     const [nombreU, setNombreU] = useState(nombre);
     const [datosU, setDatosU] = useState(datos);
 
+//usar un use efect 
 
-
-
+//creat un objeto 
   return (
     <div>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Bienvenido />} />
+                <Route path="/" element={<Bienvenido />} />{/*poner los set*/}
                 <Route path="/bienvenido" element={<Bienvenido />} />
                 <Route path="/bar" element={<ResponsiveAppBar profileImageUrl={profileImageUrl} />} />
                 <Route path="/creaCuenta" element={<CreaCuenta />} />

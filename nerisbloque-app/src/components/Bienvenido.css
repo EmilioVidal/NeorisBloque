@@ -36,6 +36,13 @@
     border: 0.4px solid black;
 }
 
+.input textarea{
+    width: 350px;
+    height: 35px;
+    border-radius: 10px;
+    border: 0.4px solid black;
+}
+
 .input p {
     justify-self: center;
     align-self: center;
