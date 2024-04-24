@@ -3,16 +3,20 @@ import Backbtn from '../img/BackBTN.png'
 import currency from '../img/Digital Currency Logo.png';
 import AppBar from "../components/AppBar"
 import ProfileAvatar from './ProfileAvatar';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import { Link } from 'react-router-dom';
 
 
 import './Usuario.css'
 
 function Usuario({ profileImageUrl }) {
-    var  puntos = 999;
-    var cursosV = 50;
-    var hamilidadesV = 60;
-    
+    let puntos = 999;
+    let cursosV = 1;
+    let hamilidadesV = 60;
+    let percentage = 4;
+
+
   return (
     <div>
         <AppBar profileImageUrl={profileImageUrl} />
@@ -40,19 +44,111 @@ function Usuario({ profileImageUrl }) {
         </div>
         <div id='linea-us'></div>
 
-        <div id='zona-puntos'>
-            <div id='puntos-us'>
-                <h2>Puntos</h2>
-                <img src={currency} alt="perro-puntos" />
-                <p id='num-puntos'>{puntos}</p>
+        <h3>Progreso</h3>
+        <div id='progreso'>   
+            <div id='circulos'>
+
+                <div className='circP'>
+                    <CircularProgressbar
+                        value={(percentage/10)*100}
+                        text={`${(percentage/10)*100}%`}
+                        styles={buildStyles({
+                            // Rotation of path and trail, in number of turns (0-1)
+                            rotation: 0,
+                            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                            strokeLinecap: 'round',
+                            // Text size
+                            textSize: '16px',
+                            // How long animation takes to go from one percentage to another, in seconds
+                            pathTransitionDuration: 0.5,
+                            // Colors
+                            pathColor: `rgba(62, 152, 199, ${((percentage/5)*100) / 100})`,
+                            textColor: '#f88',
+                            trailColor: '#d6d6d6',
+                            backgroundColor: '#3e98c7',
+                        })}
+                    />
+                </div>
+                <div className='circP'>
+                    <CircularProgressbar
+                            value={(percentage/10)*100}
+                            text={`${(percentage/10)*100}%`}
+                            styles={buildStyles({
+                                // Rotation of path and trail, in number of turns (0-1)
+                                rotation: 0,
+                                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                                strokeLinecap: 'round',
+                                // Text size
+                                textSize: '16px',
+                                // How long animation takes to go from one percentage to another, in seconds
+                                pathTransitionDuration: 0.5,
+                                // Colors
+                                pathColor: `rgba(62, 152, 199, ${((percentage/5)*100) / 100})`,
+                                textColor: '#f88',
+                                trailColor: '#d6d6d6',
+                                backgroundColor: '#3e98c7',
+                            })}
+                            />
+                </div>
+                <div className='circP'>
+                    <CircularProgressbar
+                            value={(percentage/10)*100}
+                            text={`${(percentage/10)*100}%`}
+                            styles={buildStyles({
+                                // Rotation of path and trail, in number of turns (0-1)
+                                rotation: 0,
+                                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                                strokeLinecap: 'round',
+                                // Text size
+                                textSize: '16px',
+                                // How long animation takes to go from one percentage to another, in seconds
+                                pathTransitionDuration: 0.5,
+                                // Colors
+                                pathColor: `rgba(62, 152, 199, ${((percentage/5)*100) / 100})`,
+                                textColor: '#f88',
+                                trailColor: '#d6d6d6',
+                                backgroundColor: '#3e98c7',
+                            })}
+                            />
+                </div>
+                <div className='circP'>
+                    <CircularProgressbar
+                            value={(percentage/10)*100}
+                            text={`${(percentage/10)*100}%`}
+                            styles={buildStyles({
+                                // Rotation of path and trail, in number of turns (0-1)
+                                rotation: 0,
+                                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                                strokeLinecap: 'round',
+                                // Text size
+                                textSize: '16px',
+                                // How long animation takes to go from one percentage to another, in seconds
+                                pathTransitionDuration: 0.5,
+                                // Colors
+                                pathColor: `rgba(62, 152, 199, ${((percentage/5)*100) / 100})`,
+                                textColor: '#f88',
+                                trailColor: '#d6d6d6',
+                                backgroundColor: '#3e98c7',
+                            })}
+                            />
+                </div>
+
+            </div>
+            <div id="linea-vertical"></div>
+            <div id='zona-puntos'>
+                <div id='puntos-us'>
+                    <h2>Puntos</h2>
+                    <img src={currency} alt="perro-puntos" />
+                    <p id='num-puntos'>{puntos}</p>
+                </div>
             </div>
         </div>
-        <h3>Progreso en los cursos</h3>
+
         <div id='nivel-center'>
             <div id='nivel-edit'>
                 <h3>Cursos</h3>
-                <progress value={cursosV} max="100"></progress>
-                <h3>Habilidades</h3>
+                <progress value={cursosV} max="5"></progress>
+                <h3>Nivel</h3>
                 <progress value={hamilidadesV} max="100"></progress>   
             </div>
             
