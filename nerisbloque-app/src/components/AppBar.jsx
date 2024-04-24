@@ -13,7 +13,7 @@ import ProfileAvatar from "./ProfileAvatar"
 import { Link } from 'react-router-dom';
 
 const pages = ['Juego', 'Recompensas'];
-const settings = ['Perfil', 'Ajustes'];
+const settings = ['Perfil', 'Editar Perfil'];
 
 function ResponsiveAppBar({ profileImageUrl }) {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -30,7 +30,7 @@ function ResponsiveAppBar({ profileImageUrl }) {
         if (settings == "Perfil"){
             window.location.href = "/usuario";
         }
-        else if(settings == "Ajustes"){
+        else if(settings == "Editar Perfil"){
             window.location.href = "/edit"
         }
     }
@@ -51,7 +51,9 @@ function ResponsiveAppBar({ profileImageUrl }) {
         <Toolbar disableGutters>
             
             <img src={NeorisPP} alt="Neoris logo" style={{ width: "200px", marginRight: "auto", cursor: "pointer" }} onClick={() => mainP()} />
-
+            <Box>
+                <Link to={"/upload"}>POPO</Link>
+            </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

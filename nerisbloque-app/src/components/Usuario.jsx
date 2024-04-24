@@ -12,6 +12,7 @@ function Usuario({ profileImageUrl }) {
     var  puntos = 999;
     var cursosV = 50;
     var hamilidadesV = 60;
+    
   return (
     <div>
         <AppBar profileImageUrl={profileImageUrl} />

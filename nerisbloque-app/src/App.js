@@ -7,6 +7,7 @@ import AdminView from './components/AdminView';
 import Rewards from './components/Rewards';
 import Game from './components/Game';
 import ResponsiveAppBar from './components/AppBar'
+import Upload from "./components/Upload"
 import React, {useState} from 'react';
 import userImage from './img/User.png';
 import Score from './components/Score';
@@ -17,6 +18,8 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 
 function App() {
+    var nombre= "Pedro pica Pierda";
+    var datos = "Bro ipsum dolor sit amet twister wheels taco glove, gear jammer park derailleur stunt shreddin giblets couloir sucker hole pow huck.";
     const [profileImageUrl, setProfileImageUrl] = useState(userImage);
 
 
@@ -34,6 +37,7 @@ function App() {
                 <Route path="/edit" element={<EditP profileImageUrl={profileImageUrl} setProfileImageUrl={setProfileImageUrl}  />} />
                 <Route path="/adminView" element={<AdminView profileImageUrl={profileImageUrl}/>} />
                 <Route path="/rewards" element={<Rewards profileImageUrl={profileImageUrl}/>} />
+                <Route path="/upload" element={<Upload profileImageUrl={profileImageUrl}/>} />
                 <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
         </BrowserRouter>
