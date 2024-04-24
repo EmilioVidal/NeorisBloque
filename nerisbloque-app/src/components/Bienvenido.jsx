@@ -16,7 +16,7 @@ function Bienvenido() {
         <div className='input'>
             <div>
                 <p>Email</p>
-                <input type="text" />
+                <input type="text"  />
             </div>
             <div>
                 <p>Contraseña</p>
@@ -31,7 +31,7 @@ function Bienvenido() {
             
             <a href="">Olvide mi contraseña</a>
         </div>
-        <Link to="/game" className='inicialS'>Iniciar sesión</Link>
+        <Link to="/game" className='inicialS' >Iniciar sesión</Link>
         <div id='lineaS'>
             <div className='linea-horizontal'></div>
             <span>ó</span>
