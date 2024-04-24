@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Bienvenido.css';
-import { auth, database } from './FirebaseConfig';
+import { auth, database } from '../API/FirebaseConfig';
 // import { database } from ' ./FirebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { ref, set } from 'firebase/database';

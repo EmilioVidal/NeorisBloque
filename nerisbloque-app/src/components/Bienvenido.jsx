@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Bienvenido.css';
 import Footer from "../components/Footer";
 import noerisLogo from '../img/NEORIS logo dark.png';
-import { auth } from './FirebaseConfig';
+import { auth } from '../API/FirebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 function Bienvenido() {
