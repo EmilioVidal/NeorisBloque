@@ -49,7 +49,7 @@ function CreaCuenta() {
             <textarea name="datos" type="text" className="form-control"  placeholder="Trabajdor desde el 2020 en el area de FullStack tengo 19 años0"></textarea>
           </div>
           <div>
-            <p>Datos del Usuario</p>
+            <p>Correo Electronico</p>
             <input name="email" type="text" className="form-control" id="emailInp" placeholder="name@example.com" />
           </div>
           <div>
