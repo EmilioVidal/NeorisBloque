@@ -2,9 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Bienvenido.css';
 import { auth, database } from '../API/FirebaseConfig';
-// import { database } from ' ./FirebaseConf
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { ref, set } from 'firebase/database';
+import { ref, push } from 'firebase/database';
 
 function CreaCuenta() {
   const handleRegister = async (event) => {
@@ -12,6 +11,8 @@ function CreaCuenta() {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
+    const fullName = event.target.nombreCompletoU.value;
+    const userData = event.target.datos.value;
 
     if (password !== confirmPassword) {
       alert("Las contraseñas no coinciden.");
@@ -22,13 +23,17 @@ function CreaCuenta() {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Guardar el email en la base de datos
-      set(ref(database, 'users/' + user.uid), {
+      // Usar push para agregar datos a la lista de usuarios
+      const usersRef = ref(database, 'users');
+      push(usersRef, {
+        uid: user.uid,
         email: email,
+        fullName: fullName,
+        userData: userData
       });
 
-      console.log("Usuario creado y guardado en la base de datos");
-      // Redirigir al usuario o mostrar un mensaje de éxito
+      console.log("Usuario creado y datos agregados a la lista en la base de datos");
+      // Aquí puedes añadir una redirección o manejo adicional del estado del usuario
     } catch (error) {
       console.error("Error al registrar el usuario:", error.message);
       alert(error.message);
@@ -40,16 +45,16 @@ function CreaCuenta() {
       <h2>Crea tu cuenta</h2>
       <form onSubmit={handleRegister}>
         <div className='input'>
-            <div>
+          <div>
             <p>Nombre Completo</p>
             <input name="nombreCompletoU" type="text" className="form-control" placeholder="Emilio Vidal Cavazos Páez" />
           </div>
           <div>
             <p>Datos del Usuario</p>
-            <textarea name="datos" type="text" className="form-control"  placeholder="Trabajdor desde el 2020 en el area de FullStack tengo 19 años0"></textarea>
+            <textarea name="datos" className="form-control" placeholder="Trabajador desde el 2020 en el área de FullStack, tengo 19 años"></textarea>
           </div>
           <div>
-            <p>Correo Electronico</p>
+            <p>Correo Electrónico</p>
             <input name="email" type="text" className="form-control" id="emailInp" placeholder="name@example.com" />
           </div>
           <div>
@@ -60,9 +65,9 @@ function CreaCuenta() {
             <p>Confirma Contraseña</p>
             <input name="confirmPassword" type="password" className="form-control" placeholder="Repite tu contraseña" />
           </div>
+          <button type="submit" className='inicialS' style={{cursor: "pointer"}}>Registrar</button>
         </div>
       </form>
-      <button type="submit" className='inicialS'style={{cursor: "pointer"}} >Registrar</button>
       <Link to="/login" className='inicialS'>Iniciar sesión</Link>
     </div>
   );
