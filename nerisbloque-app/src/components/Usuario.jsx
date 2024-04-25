@@ -12,7 +12,7 @@ import './Usuario.css'
 import DatosUsuario from './DatosUsuario';
 
 
-function Usuario({ profileImageUrl, nombreU, datosU }) {
+function Usuario({ profileImageUrl, nombreU, datosU, email }) {
     let puntos = 999;
     let nivelU = 60;
     //estos son cuantos cursos se han completado de cada cosa
@@ -48,6 +48,7 @@ function Usuario({ profileImageUrl, nombreU, datosU }) {
         <div id='linea-us'></div>
 
         <h3 id='progresoT'>Progreso</h3>
+        <h3>{email}</h3>
         <div id='progreso'> 
             <div id='circulos'>
 

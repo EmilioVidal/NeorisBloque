@@ -6,7 +6,7 @@ import noerisLogo from '../img/NEORIS logo dark.png';
 import { auth } from '../API/FirebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-function Bienvenido() {
+function Bienvenido({setEmail}) {
     const navigate = useNavigate();
   
     const handleLogin = async (event) => {
@@ -17,6 +17,7 @@ function Bienvenido() {
       try {
           const userCredential = await signInWithEmailAndPassword(auth, email, password);
           console.log("Inicio de sesión exitoso:", userCredential);
+          setEmail(email);  
           //aqui es donde se piden los datos del usuario en la base de datos
           //despues hacer un set user donde mande los datos del usuario 
           navigate("/game"); // Aquí utilizamos navigate para redirigir al usuario
