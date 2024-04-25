@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import AppBar from './AppBar';
 import './Upload.css';
+import AppBar from "../components/AppBar";
 
-function Upload({ profileImageUrl }) {
+function Upload({profileImageUrl}) {
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedCourse, setSelectedCourse] = useState('');
     const [showSubmitButton, setShowSubmitButton] = useState(false);
@@ -45,7 +45,7 @@ function Upload({ profileImageUrl }) {
             <div className="upload-container">
                 <h1>Subir Imagen</h1>
                 <div className="course-dropdown">
-                    <label htmlFor="course-select">Seleccionar curso:</label>
+                    <label htmlFor="course-select"></label>
                     <select id="course-select" value={selectedCourse} onChange={handleCourseSelect}>
                         <option value="">Seleccione un curso</option>
                         {courses.map(course => (
@@ -60,19 +60,17 @@ function Upload({ profileImageUrl }) {
                     style={{ display: 'none' }}
                     id="input-image"
                 />
-                <button onClick={() => document.getElementById('input-image').click()}>
+                <button onClick={() => document.getElementById('input-image').click()} id='select-img'>
                     Seleccionar imagen
                 </button>
                 {showSubmitButton && (
-                    <button onClick={handleSubmit}>
+                    <button onClick={handleSubmit} id='enviar'>
                         Enviar
                     </button>
                 )}
-                {selectedImage && (
-                    <div className="image-container">
-                        <img src={selectedImage} alt="Imagen seleccionada" />
-                    </div>
-                )}
+                <div className="image-container">
+                    <img src={selectedImage} alt='' />
+                </div>
             </div>
         </div>
     );
