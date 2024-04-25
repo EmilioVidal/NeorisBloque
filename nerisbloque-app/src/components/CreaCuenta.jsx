@@ -67,6 +67,9 @@ function CreaCuenta() {
           </div>
           <button type="submit" className='inicialS' style={{cursor: "pointer"}}>Registrar</button>
         </div>
+        <div className='input'>
+            <button type="submit" className='inicialS'style={{cursor: "pointer", justifyContent:"center"}} >Registrar</button>
+        </div>
       </form>
       <Link to="/login" className='inicialS'>Iniciar sesión</Link>
     </div>
