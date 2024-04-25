@@ -52,7 +52,7 @@ function Bienvenido() {
                     <p>Contraseña</p>
                     <input type="password" name="password" /> {/* Añade name="password" */}
                 </div>
-                <button type="submit" className='inicialS' style={{}}>Iniciar sesión</button> {/* Cambia Link por button */}
+                <button type="submit" className='inicialS' style={{cursor:"pointer"}}>Iniciar sesión</button> {/* Cambia Link por button */}
             </div>
           </form>
           <div id='post-login'>

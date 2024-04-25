@@ -14,7 +14,7 @@ import DatosUsuario from './DatosUsuario';
 
 function Usuario({ profileImageUrl, nombreU, datosU }) {
     let puntos = 999;
-    let hamilidadesV = 60;
+    let nivelU = 60;
     //estos son cuantos cursos se han completado de cada cosa
     let percentageTotal = 4;
     let percentagePE = 2;
@@ -158,7 +158,7 @@ function Usuario({ profileImageUrl, nombreU, datosU }) {
         <div id='nivel-center'>
             <div id='nivel-edit'>
                 <h3>Nivel</h3>
-                <progress value={hamilidadesV} max="100"></progress>   
+                <progress value={nivelU} max="100"></progress>   
             </div>
             
         </div>
