@@ -28,10 +28,10 @@ function Usuario({ profileImageUrl, nombreU, datosU }) {
         <header>
             <div id = "arriba-us">
                 <Link to='/game'>
-                    <button type='button' id='boton-atras'><img src={Backbtn} alt="Flecha para atras" /></button>
+                    <button type='button' id='boton-atras' style={{cursor:'pointer'}}><img src={Backbtn} alt="Flecha para atras" /></button>
                 </Link>
                 <Link to="/edit">
-                    <button type='button' id='edit-p'>Editar Perfil</button>
+                    <button type='button' id='edit-p' style={{cursor:'pointer'}}>Editar Perfil</button>
                 </Link>
             </div>
         </header>

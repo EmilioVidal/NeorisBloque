@@ -68,7 +68,7 @@ function EditP({ profileImageUrl, setProfileImageUrl, nombreU, setNombreU, datos
             <header>
                 <div id="arriba-edit">
                     <Link to='/usuario'>
-                        <button type='button' id='boton-atras'><img src={Backbtn} alt="Flecha para atrás" /></button>
+                        <button type='button' id='boton-atras' style={{cursor:'pointer'}}><img src={Backbtn} alt="Flecha para atrás" /></button>
                     </Link>
                 </div>
             </header>
