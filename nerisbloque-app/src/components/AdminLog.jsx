@@ -25,7 +25,7 @@ function AdminLog() {
             </label>
                 <a href="">Olvide mi contraseña</a>
             </div>
-        <Link to="/game" className='inicialS'>Iniciar sesión</Link>
+        <Link to="/adminView" className='inicialS'>Iniciar sesión</Link>
     </div>
   )
 }

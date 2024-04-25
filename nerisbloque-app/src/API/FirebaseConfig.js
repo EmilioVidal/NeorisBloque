@@ -25,3 +25,5 @@ const database = getDatabase(app);
 const analytics = getAnalytics(app);
 
 export { auth, database, analytics };
+
+

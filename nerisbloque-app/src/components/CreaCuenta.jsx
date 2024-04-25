@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Bienvenido.css';
-import { auth, database } from './FirebaseConfig';
-// import { database } from ' ./FirebaseConfig';
+import { auth, database } from '../API/FirebaseConfig';
+// import { database } from ' ./FirebaseConf
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { ref, set } from 'firebase/database';
 
@@ -40,17 +40,30 @@ function CreaCuenta() {
       <h2>Crea tu cuenta</h2>
       <form onSubmit={handleRegister}>
         <div className='input'>
+            <div>
+            <p>Nombre Completo</p>
+            <input name="nombreCompletoU" type="text" className="form-control" placeholder="Emilio Vidal Cavazos Páez" />
+          </div>
           <div>
+            <p>Datos del Usuario</p>
+            <textarea name="datos" type="text" className="form-control"  placeholder="Trabajdor desde el 2020 en el area de FullStack tengo 19 años0"></textarea>
+          </div>
+          <div>
+            <p>Correo Electronico</p>
             <input name="email" type="text" className="form-control" id="emailInp" placeholder="name@example.com" />
           </div>
           <div>
+            <p>Contraseña</p>
             <input name="password" type="password" className="form-control" id="passwordInp" placeholder="Password" />
           </div>
           <div>
+            <p>Confirma Contraseña</p>
             <input name="confirmPassword" type="password" className="form-control" placeholder="Repite tu contraseña" />
           </div>
         </div>
-        <button type="submit" className='inicialS'>Registrar</button>
+        <div className='input'>
+            <button type="submit" className='inicialS'style={{cursor: "pointer", justifyContent:"center"}} >Registrar</button>
+        </div>
       </form>
       <Link to="/login" className='inicialS'>Iniciar sesión</Link>
     </div>
