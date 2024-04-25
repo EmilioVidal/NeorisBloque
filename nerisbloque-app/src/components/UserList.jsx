@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { database } from '../API/FirebaseConfig'; // Asegúrate de que la ruta es correcta
 import { ref, onValue } from 'firebase/database';
 
-const UserList = ({nombre, datos}) => {
+const UserList = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
