@@ -11,14 +11,14 @@ import Upload from "./components/Upload"
 import React, {useState} from 'react';
 import userImage from './img/User.png';
 import Score from './components/Score';
+import UserList from './components/UserList';
 import './App.css';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
- 
 
 
 function App() {
-    let nombre = "Pedro pica Piedra"
+    let nombre = "Pedro pica Piedra";
     let datos = "Bro ipsum dolor sit amet twister wheels taco glove, gear jammer park derailleur stunt shreddin giblets couloir sucker hole pow huck.";
 
     const [profileImageUrl, setProfileImageUrl] = useState(userImage);
@@ -46,6 +46,7 @@ function App() {
                 <Route path="/rewards" element={<Rewards profileImageUrl={profileImageUrl}/>} />
                 <Route path="/upload" element={<Upload profileImageUrl={profileImageUrl}/>} />
                 <Route path="/*" element={<Navigate to="/" />} />
+                <Route path="/users" element={<UserList />} /> 
             </Routes>
         </BrowserRouter>
     </div>
