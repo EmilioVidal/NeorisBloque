@@ -19,7 +19,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 
 function App() {
-    let nombre = user.fullName
+    let nombre = "Pedro pica Piedra";
     let datos = "Bro ipsum dolor sit amet twister wheels taco glove, gear jammer park derailleur stunt shreddin giblets couloir sucker hole pow huck.";
 
     const [profileImageUrl, setProfileImageUrl] = useState(userImage);
