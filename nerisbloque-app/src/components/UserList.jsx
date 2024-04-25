@@ -10,7 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-const UserList = ({ nombre, datos }) => {
+const UserList = () => {
   const [users, setUsers] = useState([]);
   const [filterEmail, setFilterEmail] = useState('');
   const [filterFullName, setFilterFullName] = useState('');
