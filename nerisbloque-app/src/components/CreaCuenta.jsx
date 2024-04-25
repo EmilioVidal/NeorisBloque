@@ -61,8 +61,10 @@ function CreaCuenta() {
             <input name="confirmPassword" type="password" className="form-control" placeholder="Repite tu contraseña" />
           </div>
         </div>
+        <div className='input'>
+            <button type="submit" className='inicialS'style={{cursor: "pointer", justifyContent:"center"}} >Registrar</button>
+        </div>
       </form>
-      <button type="submit" className='inicialS'style={{cursor: "pointer"}} >Registrar</button>
       <Link to="/login" className='inicialS'>Iniciar sesión</Link>
     </div>
   );
