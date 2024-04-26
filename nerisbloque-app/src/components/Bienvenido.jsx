@@ -18,6 +18,7 @@ function Bienvenido({setEmail}) {
           const userCredential = await signInWithEmailAndPassword(auth, email, password);
           console.log("Inicio de sesión exitoso:", userCredential);
           setEmail(email);  
+          console.log(email)
           //aqui es donde se piden los datos del usuario en la base de datos
           //despues hacer un set user donde mande los datos del usuario 
           navigate("/game"); // Aquí utilizamos navigate para redirigir al usuario
