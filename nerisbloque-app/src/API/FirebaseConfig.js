@@ -3,7 +3,6 @@ import { initializeApp } from "firebase/app";
 import {getAuth, setPersistence, browserLocalPersistence} from"firebase/auth";
 import { getDatabase } from "firebase/database";
 import { getAnalytics } from "firebase/analytics";
-import {getStorage} from 'firebase/storage';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,9 +23,13 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
 const analytics = getAnalytics(app);
-export const storage = getStorage(FirebaseConfig)
-setPersistence(auth, browserLocalPersistence);
-
+setPersistence(auth, browserLocalPersistence)
+    .then(() =>{
+        console.log('Persistencia de sesión establecida');
+    })
+    .catch((error)=>{
+        console.error('Error al establecer la presistencia de sesion:', error);
+    });
 export { auth, database, analytics };
 
 
