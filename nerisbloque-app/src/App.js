@@ -84,8 +84,8 @@ function App() {
                 <Route path="/creaCuenta" element={<CreaCuenta />} />
                 <Route path="/game" element={<Game profileImageUrl={profileImageUrl} />} />
                 <Route path="/adminLog" element={<AdminLog />} />
-                <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} nombreU={nombre} datosU={datos} email={email} />} />
-                <Route path="/edit" element={<EditP profileImageUrl={profileImageUrl} setProfileImageUrl={setProfileImageUrl} nombreU={nombre} datosU={datos}/>} />
+                <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} nombreU={userData ? userData.fullName : ""} datosU={userData ? userData.userData : ""} />} />
+                <Route path="/edit" element={<EditP profileImageUrl={profileImageUrl} setProfileImageUrl={setProfileImageUrl} nombreU={userData ? userData.fullName : ""} setNombreU={(nombre) => setUserData({...userData, fullName: nombre})} datosU={userData ? userData.userData : ""} setDatosU={(datos) => setUserData({...userData, userData: datos})}/>} />
                 <Route path="/adminView" element={<AdminView profileImageUrl={profileImageUrl}/>} />
                 <Route path="/rewards" element={<Rewards profileImageUrl={profileImageUrl}/>} />
                 <Route path="/upload" element={<Upload profileImageUrl={profileImageUrl}/>} />

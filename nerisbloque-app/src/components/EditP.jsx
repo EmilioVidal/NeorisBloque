@@ -7,12 +7,14 @@ import editImg from '../img/pencil_icon.png';
 import AppBar from "../components/AppBar";
 import ProfileAvatar from "./ProfileAvatar";
 import NombreUsuario from './NombreUsuario';
-
 import './EditP.css';
 import { Link } from 'react-router-dom';
 import DatosUsuario from './DatosUsuario';
+import { ref, set } from 'firebase/database';
+import { database } from '../API/FirebaseConfig'; 
 
-function EditP({ profileImageUrl, setProfileImageUrl, nombreU, setNombreU, datosU, setDatosU}) {
+
+function EditP({ profileImageUrl, setProfileImageUrl, nombreU, setNombreU, datosU, setDatosU, user}) {
 
     const [editingName, setEditingName] = useState(false);
     const [newName, setNewName] = useState('');
@@ -45,6 +47,8 @@ function EditP({ profileImageUrl, setProfileImageUrl, nombreU, setNombreU, datos
     };
 
     const handleNameSave = () => {
+        const userRef = ref(database, `users/${user.uid}`);
+        set(ref(database, `${userRef}/fullName`), newName);
         setNombreU(newName);
         setEditingName(false);
     };
@@ -58,6 +62,8 @@ function EditP({ profileImageUrl, setProfileImageUrl, nombreU, setNombreU, datos
     };
 
     const handleDatosSave = () => {
+        const userRef = ref(database, `users/${user.uid}`);
+        set(ref(database, `${userRef}/userData`), newDatos);
         setDatosU(newDatos);
         setEditingDatos(false);
     };
