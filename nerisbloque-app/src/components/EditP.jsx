@@ -47,10 +47,22 @@ function EditP({ profileImageUrl, setProfileImageUrl, nombreU, setNombreU, datos
     };
 
     const handleNameSave = () => {
-        const userRef = ref(database, `users/${user.uid}`);
-        set(ref(database, `${userRef}/fullName`), newName);
-        setNombreU(newName);
-        setEditingName(false);
+        console.log("Intentando guardar el nombre nuevo:", newName);  // Para depuración
+        if (user && user.uid) {
+            const userRef = ref(database, `users/${user.uid}/fullName`);
+            set(userRef, newName)
+                .then(() => {
+                    console.log("Nombre actualizado correctamente en la base de datos.");
+                    setNombreU(newName); // Actualiza el estado local
+                    setEditingName(false); // Sale del modo edición
+                    console.log("Nombre actualizado en el estado local:", nombreU);
+                })
+                .catch((error) => {
+                    console.error("Error al actualizar el nombre en la base de datos:", error);
+                });
+        } else {
+            console.error("Usuario no está definido o autenticado.");
+        }
     };
     
     const handleDatosEditClick = () => {

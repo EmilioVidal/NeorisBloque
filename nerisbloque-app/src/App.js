@@ -27,13 +27,19 @@ function App() {
     const auth = getAuth();
     const [userData, setUserData] = useState("null"); // Cambia la inicialización de userData
 
-    useEffect(() =>{
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user);
-        });
-
-        return () => unsubscribe();
-    },[auth]);
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+          if (user) {
+              console.log("Usuario autenticado:", user);
+              setUser(user);
+          } else {
+              console.log("No hay usuario autenticado.");
+              setUser(null);
+          }
+      });
+  
+      return () => unsubscribe();
+  }, [auth]);
 
     useEffect(() => {
       const usersRef = ref(database, 'users');
