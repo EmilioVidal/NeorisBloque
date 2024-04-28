@@ -22,24 +22,46 @@ function App() {
     const [email, setEmail] = useState("");
     const [users, setUsers] = useState([]);
     const [user, setUser] = useState(null);
+    //const [nombreU, setNombreU] = useState("");
+    
 
 
     const auth = getAuth();
-    const [userData, setUserData] = useState("null"); // Cambia la inicialización de userData
+    const [userData, setUserData] = useState(null); // Cambia la inicialización de userData
+
 
     useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (user) => {
-          if (user) {
-              console.log("Usuario autenticado:", user);
-              setUser(user);
-          } else {
-              console.log("No hay usuario autenticado.");
-              setUser(null);
-          }
-      });
+      if (user) {
+          const userRef = ref(database, `users/${user.uid}`);
+          onValue(userRef, (snapshot) => {
+              const fetchedUserData = snapshot.val();
+              if (fetchedUserData) {
+                  setUserData(fetchedUserData);
+              } else {
+                  console.error("No user data found");
+              }
+          }, {
+              onlyOnce: true
+          });
+      }
+  }, [user]);
+
+ 
   
-      return () => unsubscribe();
-  }, [auth]);
+    useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        if (currentUser) {
+            console.log("Authenticated User:", currentUser);
+            setUser(currentUser);
+        } else {
+            setUser(null);
+            setUserData(null);
+        }
+    });
+
+    return () => unsubscribe();
+}, [auth]);
+
 
     useEffect(() => {
       const usersRef = ref(database, 'users');
@@ -91,7 +113,7 @@ function App() {
                 <Route path="/game" element={<Game profileImageUrl={profileImageUrl} />} />
                 <Route path="/adminLog" element={<AdminLog />} />
                 <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} nombreU={userData ? userData.fullName : ""} datosU={userData ? userData.userData : ""} />} />
-                <Route path="/edit" element={<EditP profileImageUrl={profileImageUrl} setProfileImageUrl={setProfileImageUrl} nombreU={userData ? userData.fullName : ""} setNombreU={(nombre) => setUserData({...userData, fullName: nombre})} datosU={userData ? userData.userData : ""} setDatosU={(datos) => setUserData({...userData, userData: datos})}/>} />
+                <Route path="/edit" element={<EditP user={user} profileImageUrl={profileImageUrl} setProfileImageUrl={setProfileImageUrl} nombreU={userData ? userData.fullName : ""} setNombreU={(nombre) => setUserData({...userData, fullName: nombre})} datosU={userData ? userData.userData : ""} setDatosU={(datos) => setUserData({...userData, userData: datos})} userData={userData} setUserData={setUserData} />} />
                 <Route path="/adminView" element={<AdminView profileImageUrl={profileImageUrl}/>} />
                 <Route path="/rewards" element={<Rewards profileImageUrl={profileImageUrl}/>} />
                 <Route path="/upload" element={<Upload profileImageUrl={profileImageUrl}/>} />

@@ -14,7 +14,7 @@ import { ref, set } from 'firebase/database';
 import { database } from '../API/FirebaseConfig'; 
 
 
-function EditP({ profileImageUrl, setProfileImageUrl, nombreU, setNombreU, datosU, setDatosU, user}) {
+function EditP({ user, profileImageUrl, setProfileImageUrl, nombreU, setNombreU, datosU, setDatosU, userData, setUserData }) {
 
     const [editingName, setEditingName] = useState(false);
     const [newName, setNewName] = useState('');
@@ -23,11 +23,12 @@ function EditP({ profileImageUrl, setProfileImageUrl, nombreU, setNombreU, datos
     const [newDatos, setNewDatos] = useState('');
 
     const handleProfileImageChange = (event) => {
-        const newImageUrl = URL.createObjectURL(event.target.files[0]);
+        const file = event.target.files[0];
+        const newImageUrl = URL.createObjectURL(file);
         console.log('New image URL:', newImageUrl);
         setProfileImageUrl(newImageUrl);
-        //aqui se podria actializar la foto en la base de datos
     };
+    
 
     const handleEditImageClick = () => {
         const inputImage = document.getElementById('input-image');
@@ -47,23 +48,35 @@ function EditP({ profileImageUrl, setProfileImageUrl, nombreU, setNombreU, datos
     };
 
     const handleNameSave = () => {
-        console.log("Intentando guardar el nombre nuevo:", newName);  // Para depuración
         if (user && user.uid) {
             const userRef = ref(database, `users/${user.uid}/fullName`);
-            set(userRef, newName)
-                .then(() => {
-                    console.log("Nombre actualizado correctamente en la base de datos.");
-                    setNombreU(newName); // Actualiza el estado local
-                    setEditingName(false); // Sale del modo edición
-                    console.log("Nombre actualizado en el estado local:", nombreU);
-                })
-                .catch((error) => {
-                    console.error("Error al actualizar el nombre en la base de datos:", error);
-                });
+            set(userRef, newName).then(() => {
+                console.log("Nombre actualizado correctamente en la base de datos.");
+                setUserData({...userData, fullName: newName});  // Asegúrate de que esto se propaga correctamente
+                setEditingName(false);
+            }).catch((error) => {
+                console.error("Error al actualizar el nombre en la base de datos:", error);
+            });
         } else {
             console.error("Usuario no está definido o autenticado.");
         }
     };
+    
+    const handleDatosSave = () => {
+        if (user && user.uid) {
+            const userRef = ref(database, `users/${user.uid}/userData`);
+            set(userRef, newDatos).then(() => {
+                console.log("Datos actualizados correctamente en la base de datos.");
+                setDatosU(newDatos);  // Actualiza el estado local
+                setEditingDatos(false);
+            }).catch((error) => {
+                console.error("Error al actualizar los datos en la base de datos:", error);
+            });
+        } else {
+            console.error("Usuario no está definido o autenticado.");
+        }
+    };
+    
     
     const handleDatosEditClick = () => {
         setEditingDatos(true);
@@ -73,12 +86,8 @@ function EditP({ profileImageUrl, setProfileImageUrl, nombreU, setNombreU, datos
         setNewDatos(event.target.value);
     };
 
-    const handleDatosSave = () => {
-        const userRef = ref(database, `users/${user.uid}`);
-        set(ref(database, `${userRef}/userData`), newDatos);
-        setDatosU(newDatos);
-        setEditingDatos(false);
-    };
+    
+    
 
     return (
         <div>
