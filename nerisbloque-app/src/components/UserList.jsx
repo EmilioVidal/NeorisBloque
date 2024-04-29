@@ -94,10 +94,10 @@ const UserList = () => {
             <TableBody>
               {filteredUsers.map((user, index) => (
                 <TableRow key={index}>
-                  <TableCell>{user.email}</TableCell>
-                  <TableCell>{user.fullName}</TableCell>
-                  <TableCell>{user.userData}</TableCell>
-                </TableRow>
+                <TableCell>{user.email}</TableCell>
+                <TableCell>{typeof user.fullName === 'string' ? user.fullName : 'Nombre no disponible'}</TableCell>
+                <TableCell>{typeof user.userData === 'string' ? user.userData : 'No especificado'}</TableCell>
+              </TableRow>
               ))}
             </TableBody>
           </Table>
@@ -106,5 +106,6 @@ const UserList = () => {
     </div>
   );
 };
-
+// linea 98 agrega el no especificado como nombre
+// en la linea 99 marcaba error en userData por algo de cadena de texto-string
 export default UserList;

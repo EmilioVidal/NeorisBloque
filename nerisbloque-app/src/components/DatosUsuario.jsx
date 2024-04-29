@@ -1,11 +1,12 @@
 import React from 'react'
 
-function DatosUsuario({datos}) {
+function DatosUsuario({ datos }) {
   return (
     <div>
-      <span id='datos-edit'>{datos}</span>
+      {typeof datos === 'string' ? datos : 'Información no disponible'}
     </div>
-  )
+  );
 }
+
 
 export default DatosUsuario
