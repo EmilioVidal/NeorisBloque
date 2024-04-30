@@ -1,9 +1,9 @@
-//Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {getAuth, setPersistence, browserLocalPersistence} from"firebase/auth";
+import { getAuth, setPersistence, browserLocalPersistence } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import { getAnalytics } from "firebase/analytics";
-
+import { getStorage } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,13 +24,15 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
 const analytics = getAnalytics(app);
+export const storage = getStorage(app); // Esto está bien, exporta storage directamente aquí
+
 setPersistence(auth, browserLocalPersistence)
-    .then(() =>{
+    .then(() => {
         console.log('Persistencia de sesión establecida');
     })
-    .catch((error)=>{
+    .catch((error) => {
         console.error('Error al establecer la presistencia de sesion:', error);
     });
+
+// Simplemente exporta los demás que no han sido exportados directamente
 export { auth, database, analytics };
-
-
