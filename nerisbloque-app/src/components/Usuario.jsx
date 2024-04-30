@@ -11,8 +11,7 @@ import './Usuario.css'
 import DatosUsuario from './DatosUsuario';
 
 
-function Usuario({ profileImageUrl, nombreU, datosU}) {
-    let puntos = 999;
+function Usuario({ profileImageUrl, nombreU, datosU, coins}) {
     let nivelU = 60;
     //estos son cuantos cursos se han completado de cada cosa
     let percentageTotal = 4;
@@ -148,7 +147,7 @@ function Usuario({ profileImageUrl, nombreU, datosU}) {
                 <div id='puntos-us'>
                     <h2>Puntos</h2>
                     <img src={currency} alt="perro-puntos" />
-                    <p id='num-puntos'>{puntos}</p>
+                    <p id='num-puntos'>{coins}</p>
                 </div>
             </div>
         </div>

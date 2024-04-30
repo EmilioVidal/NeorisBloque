@@ -114,10 +114,10 @@ function App() {
                 <Route path="/creaCuenta" element={<CreaCuenta />} />
                 <Route path="/game" element={<Game profileImageUrl={profileImageUrl} user={user} coins={userData ? userData.coins : 0} />} />
                 <Route path="/adminLog" element={<AdminLog />} />
-                <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} nombreU={userData ? userData.fullName : ""} datosU={userData ? userData.userData : ""} />} />
+                <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} nombreU={userData ? userData.fullName : ""} datosU={userData ? userData.userData : ""} coins={userData ? userData.coins : 0} />} />
                 <Route path="/edit" element={<EditP user={user} profileImageUrl={profileImageUrl} setProfileImageUrl={setProfileImageUrl} nombreU={userData ? userData.fullName : ""} setNombreU={(nombre) => setUserData({...userData, fullName: nombre})} datosU={userData ? userData.userData : ""} setDatosU={(datos) => setUserData({...userData, userData: datos})} userData={userData} setUserData={setUserData} />} />
                 <Route path="/adminView" element={<AdminView profileImageUrl={profileImageUrl}/>} />
-                <Route path="/rewards" element={<Rewards profileImageUrl={profileImageUrl}/>} />
+                <Route path="/rewards" element={<Rewards profileImageUrl={profileImageUrl} coins={userData ? userData.coins : 0}/>} />
                 <Route path="/upload" element={<Upload profileImageUrl={profileImageUrl}/>} />
                 <Route path="/users" element={<UserList />} /> {/* Pasar las variables nombre y datos como props */}
                 <Route path="/*" element={<Navigate to="/" />} />
