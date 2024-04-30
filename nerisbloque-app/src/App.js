@@ -113,7 +113,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Bienvenido setEmail={setEmail} user={user}/>}/>{/*poner los set*/}
                 <Route path="/bar" element={<ResponsiveAppBar profileImageUrl={profileImageUrl} />} />
-                <Route path="/creaCuenta" element={<CreaCuenta user={user}/>} />
+                <Route path="/creaCuenta" element={<CreaCuenta />} />
                 <Route path="/game" element={<Game profileImageUrl={profileImageUrl} />} />
                 <Route path="/adminLog" element={<AdminLog />} />
                 <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} nombreU={userData ? userData.fullName : ""} datosU={userData ? userData.userData : ""} />} />

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import './Bienvenido.css';
 import { auth, database } from '../API/FirebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { ref, push } from 'firebase/database';
+import { ref, set } from 'firebase/database';  // Cambio: importa 'set' en lugar de 'push'
 
-function CreaCuenta({user}) {
+function CreaCuenta({}) {
 
   const handleRegister = async (event) => {
     event.preventDefault();
@@ -21,19 +21,20 @@ function CreaCuenta({user}) {
     }
 
     try {
+      // Crear usuario con Email y Contraseña
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Usar push para agregar datos a la lista de usuarios
-      const usersRef = ref(database, 'users');
-      push(usersRef, {
+      // Usar 'set' para agregar datos a la base de datos usando el UID del usuario
+      const userRef = ref(database, `users/${user.uid}`);
+      set(userRef, {
         email: email,
         fullName: fullName,
         userData: userData
       });
 
-      console.log("Usuario creado y datos agregados a la lista en la base de datos", user);
-      // Aquí puedes añadir una redirección o manejo adicional del estado del usuario
+      console.log("Usuario creado y datos agregados a la base de datos bajo el UID de autenticación", user);
+      // Redirección o manejo adicional del estado del usuario podría ir aquí
     } catch (error) {
       console.error("Error al registrar el usuario:", error.message);
       alert(error.message);

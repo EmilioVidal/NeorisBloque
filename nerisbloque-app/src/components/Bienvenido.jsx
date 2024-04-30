@@ -22,6 +22,7 @@ function Bienvenido({setEmail, user}) {
           setEmail(email);  
           console.log(email) 
           console.log("pepe",user)      
+          console.log("pepe",user.uid)      
 
               //aqui es donde se piden los datos del usuario en la base de datos
           //despues hacer un set user donde mande los datos del usuario 
