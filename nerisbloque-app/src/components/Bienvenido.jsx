@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Bienvenido.css';
 import Footer from "../components/Footer";
@@ -6,9 +6,11 @@ import noerisLogo from '../img/NEORIS logo dark.png';
 import { auth } from '../API/FirebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-function Bienvenido({setEmail}) {
+function Bienvenido({setEmail, user}) {
     const navigate = useNavigate();
-  
+    //const [loggedIn, setLoggedIn] = useState(false); // Estado para controlar si el usuario está autenticado paa el Log Iin
+
+
     const handleLogin = async (event) => {
       event.preventDefault();
       const email = event.target.email.value;
@@ -18,8 +20,10 @@ function Bienvenido({setEmail}) {
           const userCredential = await signInWithEmailAndPassword(auth, email, password);
           console.log("Inicio de sesión exitoso:", userCredential);
           setEmail(email);  
-          console.log(email)
-          //aqui es donde se piden los datos del usuario en la base de datos
+          console.log(email) 
+          console.log("pepe",user)      
+
+              //aqui es donde se piden los datos del usuario en la base de datos
           //despues hacer un set user donde mande los datos del usuario 
           navigate("/game"); // Aquí utilizamos navigate para redirigir al usuario
       } catch (error) {
@@ -44,7 +48,7 @@ function Bienvenido({setEmail}) {
               <img src={noerisLogo} alt="" />
           </div>
         <h2>Bienvenido</h2>
-          <form onSubmit={handleLogin}> {/* Añade esto */}
+          <form onSubmit={handleLogin}> {}
             <div className='input'>
                 <div>
                     <p>Email</p>
@@ -57,12 +61,6 @@ function Bienvenido({setEmail}) {
                 <button type="submit" className='inicialS' style={{cursor:"pointer"}}>Iniciar sesión</button> {/* Cambia Link por button */}
             </div>
           </form>
-          <div id='post-login'>
-            <label>
-              <input type="checkbox"/> Recuérdame
-            </label>
-            <a href="">Olvide mi contraseña</a>
-          </div>
           <div id='lineaS'>
               <div className='linea-horizontal'></div>
               <span>ó</span>

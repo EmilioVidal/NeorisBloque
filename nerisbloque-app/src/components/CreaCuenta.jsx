@@ -5,7 +5,8 @@ import { auth, database } from '../API/FirebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { ref, push } from 'firebase/database';
 
-function CreaCuenta() {
+function CreaCuenta({user}) {
+
   const handleRegister = async (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -24,15 +25,14 @@ function CreaCuenta() {
       const user = userCredential.user;
 
       // Usar push para agregar datos a la lista de usuarios
-      const usersRef = ref(database, 'users/${user.uid}');
+      const usersRef = ref(database, 'users');
       push(usersRef, {
-        uid: user.uid,
         email: email,
         fullName: fullName,
         userData: userData
       });
 
-      console.log("Usuario creado y datos agregados a la lista en la base de datos");
+      console.log("Usuario creado y datos agregados a la lista en la base de datos", user);
       // Aquí puedes añadir una redirección o manejo adicional del estado del usuario
     } catch (error) {
       console.error("Error al registrar el usuario:", error.message);
@@ -66,9 +66,6 @@ function CreaCuenta() {
             <input name="confirmPassword" type="password" className="form-control" placeholder="Repite tu contraseña" />
           </div>
           <button type="submit" className='inicialS' style={{cursor: "pointer"}}>Registrar</button>
-        </div>
-        <div className='input'>
-            <button type="submit" className='inicialS'style={{cursor: "pointer", justifyContent:"center"}} >Registrar</button>
         </div>
       </form>
       <Link to="/login" className='inicialS'>Iniciar sesión</Link>

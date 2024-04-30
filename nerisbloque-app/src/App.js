@@ -22,6 +22,8 @@ function App() {
     const [email, setEmail] = useState("");
     const [users, setUsers] = useState([]);
     const [user, setUser] = useState(null);
+    const [profileImageUrl, setProfileImageUrl] = useState(userImage);
+
     //const [nombreU, setNombreU] = useState("");
     
 
@@ -37,8 +39,11 @@ function App() {
               const fetchedUserData = snapshot.val();
               if (fetchedUserData) {
                   setUserData(fetchedUserData);
+                  console.log("key",user.uid);
               } else {
                   console.error("No user data found");
+                  console.log("key",user.uid);
+
               }
           }, {
               onlyOnce: true
@@ -93,7 +98,6 @@ function App() {
         }
       }, [email, users]);
 
-    const [profileImageUrl, setProfileImageUrl] = useState(userImage);
 
     // Usa directamente los valores de userData para el nombre y los datos del usuario
     const nombre = userData ? userData.fullName : "pp";
@@ -107,9 +111,9 @@ function App() {
     <div>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Bienvenido setEmail={setEmail} />}/>{/*poner los set*/}
+                <Route path="/" element={<Bienvenido setEmail={setEmail} user={user}/>}/>{/*poner los set*/}
                 <Route path="/bar" element={<ResponsiveAppBar profileImageUrl={profileImageUrl} />} />
-                <Route path="/creaCuenta" element={<CreaCuenta />} />
+                <Route path="/creaCuenta" element={<CreaCuenta user={user}/>} />
                 <Route path="/game" element={<Game profileImageUrl={profileImageUrl} />} />
                 <Route path="/adminLog" element={<AdminLog />} />
                 <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} nombreU={userData ? userData.fullName : ""} datosU={userData ? userData.userData : ""} />} />
