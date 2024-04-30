@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Upload.css';
+import { ref as storageRef, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { v4 } from 'uuid';
 import AppBar from "../components/AppBar";
+import { storage } from '../API/FirebaseConfig';
 
-function Upload({profileImageUrl}) {
+function Upload({ profileImageUrl }) {
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedCourse, setSelectedCourse] = useState('');
     const [showSubmitButton, setShowSubmitButton] = useState(false);
+    const [imageList, setImageList] = useState([]);
+    const imageListRef = storageRef(storage, "images/");
+    const [imageUpload, setImageUpload] = useState(null);
+    const [user, setUser] = useState(null);
 
     const courses = [
         { id: 1, name: 'GPT' },
@@ -14,30 +22,62 @@ function Upload({profileImageUrl}) {
         // Agrega más opciones de cursos según sea necesario
     ];
 
+    useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setUser(user);
+        });
+        return unsubscribe;
+    }, []);
+
     const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setSelectedImage(reader.result); // Guardar la imagen como base64
-                setShowSubmitButton(selectedCourse !== '' && reader.result !== ''); // Habilitar el botón "Enviar" si se ha seleccionado un curso y una imagen
-            };
-            reader.readAsDataURL(file); // Convertir la imagen a base64
-        }
+        const image = event.target.files[0];
+        setSelectedImage(URL.createObjectURL(image));
+        setImageUpload(image);
+        setShowSubmitButton(selectedCourse !== '' && image !== null);
     };
 
     const handleCourseSelect = (event) => {
         const course = event.target.value;
         setSelectedCourse(course);
-        setShowSubmitButton(course !== '' && selectedImage !== null); // Habilitar el botón "Enviar" si se ha seleccionado un curso y una imagen
+        setShowSubmitButton(course !== '' && selectedImage !== null);
     };
 
-    const handleSubmit = async () => {
-        console.log(selectedCourse);
-        console.log(selectedImage);
+    const handleSubmit = () => {
+        if (!selectedImage || !selectedCourse || !user) return;
 
-        // Aquí deberías enviar selectedImage y selectedCourse al backend para su almacenamiento
+        const userName = user.displayName; // Obtén el nombre de usuario del usuario autenticado
+
+        const imageName = `${userName}_${selectedCourse}`;
+        const imageRef = storageRef(storage, `images/${imageName}`);
+
+        const metadata = {
+            contentType: selectedImage.type
+        };
+
+        uploadBytes(imageRef, imageUpload, metadata).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then((url) => {
+                setImageList((prev) => [...prev, url]);
+                alert("Imagen subida correctamente");
+            })
+            .catch(error => {
+                console.error("Error al obtener la URL de descarga:", error);
+            });
+        })
+        .catch(error => {
+            console.error("Error al subir la imagen:", error);
+        });
     };
+
+    useEffect(() => {
+        listAll(imageListRef).then((response) => {
+            response.items.forEach((item) => {
+                getDownloadURL(item).then((url) => {
+                    setImageList((prev) => [...prev, url]);
+                });
+            });
+        });
+    }, []);
 
     return (
         <div>
@@ -45,7 +85,7 @@ function Upload({profileImageUrl}) {
             <div className="upload-container">
                 <h1>Subir Imagen</h1>
                 <div className="course-dropdown">
-                    <label htmlFor="course-select"></label>
+                    <label htmlFor="course-select">Seleccione un curso:</label>
                     <select id="course-select" value={selectedCourse} onChange={handleCourseSelect}>
                         <option value="">Seleccione un curso</option>
                         {courses.map(course => (
@@ -69,7 +109,7 @@ function Upload({profileImageUrl}) {
                     </button>
                 )}
                 <div className="image-container">
-                    <img src={selectedImage} alt='' />
+                    {selectedImage && <img src={selectedImage} alt='' />}
                 </div>
             </div>
         </div>
