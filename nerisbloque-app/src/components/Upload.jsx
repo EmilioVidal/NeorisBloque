@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './Upload.css';
 import { ref as storageRef, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { v4 } from 'uuid';
 import AppBar from "../components/AppBar";
 import { storage } from '../API/FirebaseConfig';
 

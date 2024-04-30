@@ -5,7 +5,7 @@ import { auth, database } from '../API/FirebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { ref, set } from 'firebase/database';  // Cambio: importa 'set' en lugar de 'push'
 
-function CreaCuenta({}) {
+function CreaCuenta() {
 
   const handleRegister = async (event) => {
     event.preventDefault();

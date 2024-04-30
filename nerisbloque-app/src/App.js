@@ -99,11 +99,6 @@ function App() {
       }, [email, users]);
 
 
-    // Usa directamente los valores de userData para el nombre y los datos del usuario
-    const nombre = userData ? userData.fullName : "pp";
-    const datos = userData ? userData.userData : "pp";
-
-
 //usar un use efect 
 
 //creat un objeto 
@@ -111,7 +106,7 @@ function App() {
     <div>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Bienvenido setEmail={setEmail} user={user}/>}/>{/*poner los set*/}
+                <Route path="/" element={<Bienvenido setEmail={setEmail} setUser={setUser}/>}/>{/*poner los set*/}
                 <Route path="/bar" element={<ResponsiveAppBar profileImageUrl={profileImageUrl} />} />
                 <Route path="/creaCuenta" element={<CreaCuenta />} />
                 <Route path="/game" element={<Game profileImageUrl={profileImageUrl} />} />

@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { auth, database } from '../API/FirebaseConfig';
+import { ref, update } from 'firebase/database';
+import { signOut } from 'firebase/auth';
+import './EditP.css';
 import Backbtn from '../img/BackBTN.png';
 import CambiarNombre from '../img/CMbtn.png';
 import CambiarDatos from '../img/CDbtn.png';
@@ -7,11 +12,7 @@ import editImg from '../img/pencil_icon.png';
 import AppBar from "../components/AppBar";
 import ProfileAvatar from "./ProfileAvatar";
 import NombreUsuario from './NombreUsuario';
-import './EditP.css';
-import { Link } from 'react-router-dom';
 import DatosUsuario from './DatosUsuario';
-import { ref, update } from 'firebase/database';
-import { database } from '../API/FirebaseConfig';
 
 function EditP({ user, profileImageUrl, setProfileImageUrl, nombreU, userData, setUserData}) {
 
@@ -85,6 +86,17 @@ function EditP({ user, profileImageUrl, setProfileImageUrl, nombreU, userData, s
         setNewDatos(event.target.value);
     };
 
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            console.log("Usuario ha cerrado sesión exitosamente.");
+            console.log(user.uid);
+            // Aquí puedes redirigir al usuario a la pantalla de inicio o hacer otras acciones post-logout
+        } catch (error) {
+            console.error("Error al cerrar sesión:", error);
+        }
+    };
+
     return (
         <div>
             <AppBar profileImageUrl={profileImageUrl} />
@@ -131,7 +143,7 @@ function EditP({ user, profileImageUrl, setProfileImageUrl, nombreU, userData, s
 
             <footer>
                 <Link to='/bienvenido'>
-                    <button type='button' id='logoutbtn'><img src={LOGOUTbtn} alt="Logout button" /></button>
+                    <button type='button' id='logoutbtn' onClick={handleLogout}><img src={LOGOUTbtn} alt="Logout button" /></button>
                 </Link>
             </footer>
         </div>

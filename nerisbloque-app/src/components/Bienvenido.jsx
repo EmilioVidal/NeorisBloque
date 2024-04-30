@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Bienvenido.css';
 import Footer from "../components/Footer";
@@ -6,7 +6,7 @@ import noerisLogo from '../img/NEORIS logo dark.png';
 import { auth } from '../API/FirebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-function Bienvenido({setEmail, user}) {
+function Bienvenido({setEmail, setUser}) {
     const navigate = useNavigate();
     //const [loggedIn, setLoggedIn] = useState(false); // Estado para controlar si el usuario está autenticado paa el Log Iin
 
@@ -19,10 +19,10 @@ function Bienvenido({setEmail, user}) {
       try {
           const userCredential = await signInWithEmailAndPassword(auth, email, password);
           console.log("Inicio de sesión exitoso:", userCredential);
-          setEmail(email);  
-          console.log(email) 
-          console.log("pepe",user)      
-          console.log("pepe",user.uid)      
+          const newUser = userCredential.user;
+          setEmail(email);
+          setUser(newUser);  
+          console.log(email)      
 
               //aqui es donde se piden los datos del usuario en la base de datos
           //despues hacer un set user donde mande los datos del usuario 
