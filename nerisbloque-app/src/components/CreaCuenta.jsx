@@ -13,6 +13,7 @@ function CreaCuenta() {
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
     const fullName = event.target.nombreCompletoU.value;
+    const coins = 0;
     const userData = event.target.datos.value;
 
     if (password !== confirmPassword) {
@@ -30,7 +31,8 @@ function CreaCuenta() {
       set(userRef, {
         email: email,
         fullName: fullName,
-        userData: userData
+        userData: userData,
+        coins: coins
       });
 
       console.log("Usuario creado y datos agregados a la base de datos bajo el UID de autenticación", user);

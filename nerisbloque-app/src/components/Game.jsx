@@ -8,13 +8,14 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../API/FirebaseConfig';
 
 
-const Game = ({profileImageUrl, user}) => {
+const Game = ({profileImageUrl, user, coins}) => {
 
   const handleLogout = async () => {
     try {
         await signOut(auth);
         console.log("Usuario ha cerrado sesión exitosamente.");
         console.log(user.uid);
+        console.log(coins);
         // Aquí puedes redirigir al usuario a la pantalla de inicio o hacer otras acciones post-logout
     } catch (error) {
         console.error("Error al cerrar sesión:", error);

@@ -40,7 +40,8 @@ function App() {
               if (fetchedUserData) {
                   setUserData(fetchedUserData);
                   console.log("key",user.uid);
-              } else {
+                  console.log("coins", fetchedUserData ? fetchedUserData.coins : 'No hay datos de usuario'); // Accede a las monedas desde fetchedUserData
+                } else {
                   console.error("No user data found");
                   console.log("key",user.uid);
 
@@ -78,10 +79,12 @@ function App() {
             userList.push({
               email: data[key].email,
               fullName: data[key].fullName,
-              userData: data[key].userData
+              userData: data[key].userData,
+              coins: data[key].coins
             });
           }
         }
+        console.log(userList);
         setUsers(userList);
       }, {
         onError: (error) => console.error(error)
@@ -109,7 +112,7 @@ function App() {
                 <Route path="/" element={<Bienvenido setEmail={setEmail} setUser={setUser}/>}/>{/*poner los set*/}
                 <Route path="/bar" element={<ResponsiveAppBar profileImageUrl={profileImageUrl} />} />
                 <Route path="/creaCuenta" element={<CreaCuenta />} />
-                <Route path="/game" element={<Game profileImageUrl={profileImageUrl} user={user}  />} />
+                <Route path="/game" element={<Game profileImageUrl={profileImageUrl} user={user} coins={userData ? userData.coins : 0} />} />
                 <Route path="/adminLog" element={<AdminLog />} />
                 <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} nombreU={userData ? userData.fullName : ""} datosU={userData ? userData.userData : ""} />} />
                 <Route path="/edit" element={<EditP user={user} profileImageUrl={profileImageUrl} setProfileImageUrl={setProfileImageUrl} nombreU={userData ? userData.fullName : ""} setNombreU={(nombre) => setUserData({...userData, fullName: nombre})} datosU={userData ? userData.userData : ""} setDatosU={(datos) => setUserData({...userData, userData: datos})} userData={userData} setUserData={setUserData} />} />
