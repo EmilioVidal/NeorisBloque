@@ -16,12 +16,12 @@ const cards = [
 ];
 
 
-const Rewards = ({profileImageUrl}) => {
+const Rewards = ({profileImageUrl, coins}) => {
 
   return (
     <div>
       <AppBar profileImageUrl={profileImageUrl} />
-        <TheScore profileImageUrl={profileImageUrl} />
+        <TheScore profileImageUrl={profileImageUrl} coins={coins} />
       <Box
         sx={{
           borderRadius: '10px',
