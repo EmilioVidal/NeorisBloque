@@ -24,7 +24,7 @@ function CreaCuenta() {
       const user = userCredential.user;
 
       // Usar push para agregar datos a la lista de usuarios
-      const usersRef = ref(database, 'users');
+      const usersRef = ref(database, 'users/${user.uid}');
       push(usersRef, {
         uid: user.uid,
         email: email,

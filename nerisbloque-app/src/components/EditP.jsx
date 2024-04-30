@@ -10,7 +10,7 @@ import NombreUsuario from './NombreUsuario';
 import './EditP.css';
 import { Link } from 'react-router-dom';
 import DatosUsuario from './DatosUsuario';
-import { ref, set } from 'firebase/database';
+import { ref, update } from 'firebase/database';
 import { database } from '../API/FirebaseConfig'; 
 
 
@@ -48,34 +48,40 @@ function EditP({ user, profileImageUrl, setProfileImageUrl, nombreU, setNombreU,
     };
 
     const handleNameSave = () => {
-        if (user && user.uid) {
-            const userRef = ref(database, `users/${user.uid}/fullName`);
-            set(userRef, newName).then(() => {
+        if (user && user.uid && newName.trim() !== "") {  // Asegura que newName no esté vacío y que sea diferente de blanco
+            const userRef = ref(database, `users/${user.uid}`);
+            update(userRef, { fullName: newName.trim() })  // Usar trim para eliminar espacios extra
+            .then(() => {
                 console.log("Nombre actualizado correctamente en la base de datos.");
-                setUserData({...userData, fullName: newName});  // Asegúrate de que esto se propaga correctamente
+                setUserData({ ...userData, fullName: newName.trim() });
                 setEditingName(false);
+                console.log("Actualizando datos en:", userRef.toString());
             }).catch((error) => {
                 console.error("Error al actualizar el nombre en la base de datos:", error);
             });
         } else {
-            console.error("Usuario no está definido o autenticado.");
+            console.error("Usuario no está definido, no autenticado o el nombre está vacío.");
         }
     };
     
+
     const handleDatosSave = () => {
-        if (user && user.uid) {
-            const userRef = ref(database, `users/${user.uid}/userData`);
-            set(userRef, newDatos).then(() => {
-                console.log("Datos actualizados correctamente en la base de datos.");
-                setDatosU(newDatos);  // Actualiza el estado local
+        if (user && user.uid && newDatos.trim() !== "") {  
+            const userRef = ref(database, `users/${user.uid}`);
+            update(userRef, { userData: newDatos.trim() })  
+            .then(() => {
+                console.log("Datos de usuario actualizados correctamente en la base de datos.");
+                setUserData({ ...userData, userData: newDatos.trim() }); 
                 setEditingDatos(false);
             }).catch((error) => {
-                console.error("Error al actualizar los datos en la base de datos:", error);
+                console.error("Error al actualizar los datos de usuario en la base de datos:", error);
             });
         } else {
-            console.error("Usuario no está definido o autenticado.");
+            console.error("Usuario no está definido, no autenticado o los datos están vacíos.");
         }
     };
+    
+    
     
     
     const handleDatosEditClick = () => {
@@ -85,9 +91,7 @@ function EditP({ user, profileImageUrl, setProfileImageUrl, nombreU, setNombreU,
     const handleDatosChange = (event) => {
         setNewDatos(event.target.value);
     };
-
-    
-    
+  
 
     return (
         <div>
@@ -126,7 +130,7 @@ function EditP({ user, profileImageUrl, setProfileImageUrl, nombreU, setNombreU,
                         </div>
                     ) : (
                         <div>
-                            <DatosUsuario datos={datosU}/>
+                            <DatosUsuario datos={userData && typeof userData.userData === 'string' ? userData.userData : 'Información no disponible'} />
                         </div>
                     )}
                 </div>

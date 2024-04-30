@@ -7,7 +7,6 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Link } from 'react-router-dom';
 import NombreUsuario from "./NombreUsuario";
-
 import './Usuario.css'
 import DatosUsuario from './DatosUsuario';
 
