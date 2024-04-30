@@ -1,6 +1,7 @@
 import React from 'react'
 import "./AdminView.css"
 import AppBar from "../components/AppBar"
+import UserList from '../components/UserList'
 
 
 function AdminView({profileImageUrl}) {
@@ -15,8 +16,9 @@ function AdminView({profileImageUrl}) {
             <p>Nombre de Administrador</p>
         </div>
       </div>
-      <div id='graficas'>
-        <h3>Gráficas</h3>
+      <div id='tabla'>
+        <h3>Tabla de datos</h3>
+        <UserList />
       </div>
     </div>
   )
