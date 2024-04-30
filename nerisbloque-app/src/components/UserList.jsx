@@ -94,7 +94,7 @@ const UserList = () => {
             <TableBody>
               {filteredUsers.map((user, index) => (
                 <TableRow key={index}>
-                <TableCell>{user.email}</TableCell>
+                <TableCell>{typeof user.email === 'string' ? user.email : 'Correo no disponible'}</TableCell>
                 <TableCell>{typeof user.fullName === 'string' ? user.fullName : 'Nombre no disponible'}</TableCell>
                 <TableCell>{typeof user.userData === 'string' ? user.userData : 'No especificado'}</TableCell>
               </TableRow>
