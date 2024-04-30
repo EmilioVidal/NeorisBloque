@@ -15,6 +15,7 @@ const UserList = () => {
   const [filterEmail, setFilterEmail] = useState('');
   const [filterFullName, setFilterFullName] = useState('');
   const [filterUserData, setFilterUserData] = useState('');
+  const [filterCoins, setFilterCoins] = useState('');
 
   useEffect(() => {
     const usersRef = ref(database, 'users');
@@ -26,7 +27,8 @@ const UserList = () => {
           userList.push({
             email: data[key].email,
             fullName: data[key].fullName,
-            userData: data[key].userData
+            userData: data[key].userData,
+            coins: data[key].coins
           });
         }
       }
@@ -51,13 +53,18 @@ const UserList = () => {
     setFilterUserData(event.target.value);
   };
 
+  const handleFilterCoinsChange = (event) => {
+    setFilterCoins(event.target.value);
+  };
+
   const filteredUsers = users.filter(user =>
     (!filterEmail || (user.email && user.email.toLowerCase().startsWith(filterEmail.toLowerCase()))) &&
     (!filterFullName || (user.fullName && user.fullName.toLowerCase().startsWith(filterFullName.toLowerCase()))) &&
-    (!filterUserData || (user.userData && user.userData.toLowerCase().startsWith(filterUserData.toLowerCase())))
+    (!filterUserData || (user.userData && user.userData.toLowerCase().startsWith(filterUserData.toLowerCase()))) &&
+    (!filterCoins || (user.coins != null && user.coins === parseInt(filterCoins)))
   );
   
-
+  
   return (
     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
       <div style={{ maxWidth: '800px', width: '100%' }}>
@@ -82,6 +89,13 @@ const UserList = () => {
           onChange={handleFilterUserDataChange}
           style={{ marginBottom: '16px' }}
         />
+        <TextField
+          label="Filtrar por Coins"
+          variant="outlined"
+          value={filterCoins}
+          onChange={handleFilterCoinsChange}
+          style={{ marginBottom: '16px' }}
+        />
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
@@ -89,6 +103,7 @@ const UserList = () => {
                 <TableCell>Correo Electrónico</TableCell>
                 <TableCell>Nombre Completo</TableCell>
                 <TableCell>Datos del Usuario</TableCell>
+                <TableCell>Monedas</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -97,6 +112,7 @@ const UserList = () => {
                 <TableCell>{typeof user.email === 'string' ? user.email : 'Correo no disponible'}</TableCell>
                 <TableCell>{typeof user.fullName === 'string' ? user.fullName : 'Nombre no disponible'}</TableCell>
                 <TableCell>{typeof user.userData === 'string' ? user.userData : 'No especificado'}</TableCell>
+                <TableCell>{typeof user.coins === 'number' ? user.coins : 'No especificado'}</TableCell>
               </TableRow>
               ))}
             </TableBody>
