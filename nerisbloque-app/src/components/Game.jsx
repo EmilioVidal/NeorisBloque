@@ -4,8 +4,23 @@ import Box from '@mui/material/Box';
 import './Game.css';
 import { Link } from 'react-router-dom';
 import AppBar from "../components/AppBar"
+import { signOut } from 'firebase/auth';
+import { auth } from '../API/FirebaseConfig';
 
-const Game = ({profileImageUrl}) => {
+
+const Game = ({profileImageUrl, user}) => {
+
+  const handleLogout = async () => {
+    try {
+        await signOut(auth);
+        console.log("Usuario ha cerrado sesión exitosamente.");
+        console.log(user.uid);
+        // Aquí puedes redirigir al usuario a la pantalla de inicio o hacer otras acciones post-logout
+    } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+    }
+  };
+
   return (
     <div>
         <AppBar profileImageUrl={profileImageUrl} />
@@ -31,7 +46,7 @@ const Game = ({profileImageUrl}) => {
                 Perfil
             </Button>
             </Link>
-            <Link to={"/bienvenidos"}>
+            <Link to={"/bienvenidos"} onClick={handleLogout}>
             <Button sx={{ bgcolor: 'black', width: '200px', color: 'white', margin: '10px'}}>
                 Salir
             </Button>

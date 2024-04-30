@@ -109,7 +109,7 @@ function App() {
                 <Route path="/" element={<Bienvenido setEmail={setEmail} setUser={setUser}/>}/>{/*poner los set*/}
                 <Route path="/bar" element={<ResponsiveAppBar profileImageUrl={profileImageUrl} />} />
                 <Route path="/creaCuenta" element={<CreaCuenta />} />
-                <Route path="/game" element={<Game profileImageUrl={profileImageUrl} />} />
+                <Route path="/game" element={<Game profileImageUrl={profileImageUrl} user={user}  />} />
                 <Route path="/adminLog" element={<AdminLog />} />
                 <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} nombreU={userData ? userData.fullName : ""} datosU={userData ? userData.userData : ""} />} />
                 <Route path="/edit" element={<EditP user={user} profileImageUrl={profileImageUrl} setProfileImageUrl={setProfileImageUrl} nombreU={userData ? userData.fullName : ""} setNombreU={(nombre) => setUserData({...userData, fullName: nombre})} datosU={userData ? userData.userData : ""} setDatosU={(datos) => setUserData({...userData, userData: datos})} userData={userData} setUserData={setUserData} />} />
