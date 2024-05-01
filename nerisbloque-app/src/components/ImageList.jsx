@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ref as storageRef, listAll, getDownloadURL, updateMetadata } from 'firebase/storage';
+import { ref as storageRef, listAll, getDownloadURL, updateMetadata, deleteObject } from 'firebase/storage';
 import { storage } from '../API/FirebaseConfig';
-import { getDatabase, ref as databaseRef, set, get } from 'firebase/database';
+import { getDatabase, ref as databaseRef, set, get} from 'firebase/database';
 
 const ImageList = () => {
     const [imageList, setImageList] = useState([]);
@@ -57,11 +57,13 @@ const ImageList = () => {
             await updateMetadata(imageRef, newMetadata);
             console.log('Metadatos actualizados correctamente.');
     
+            // Eliminar la imagen de Firebase Storage
+            await deleteObject(imageRef); // Utilizar deleteObject() para eliminar la imagen de Firebase Storage
+            console.log('Imagen eliminada de Firebase Storage.');
+    
             // Actualizar el valor en la base de datos en tiempo real
             const db = getDatabase();
             const userRef = databaseRef(db, `users/${userId}`);
-    
-            // Obtener los cursos completados actuales del usuario y mantener los demás cursos sin cambios
             const snapshot = await get(userRef);
             const userData = snapshot.val();
             const completedCourses = userData.completedCourses || {};
@@ -75,6 +77,7 @@ const ImageList = () => {
             console.error('Error al actualizar los metadatos:', error);
         }
     };
+    
     
 
     return (
