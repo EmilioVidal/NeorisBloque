@@ -14,6 +14,12 @@ function CreaCuenta() {
     const confirmPassword = event.target.confirmPassword.value;
     const fullName = event.target.nombreCompletoU.value;
     const coins = 0;
+    const PromtE = 0;
+    const GITCO = 0;
+    const GITSEC = 0;
+    const MaxDiist = 0;
+    const level = 0;
+    const allCompletedCourses = 0;
     const userData = event.target.datos.value;
 
     if (password !== confirmPassword) {
@@ -32,10 +38,19 @@ function CreaCuenta() {
         email: email,
         fullName: fullName,
         userData: userData,
-        coins: coins
+        coins: coins,
+        allCompletedCourses: allCompletedCourses,
+        completedCourses: {
+            PromtE: PromtE,
+            GITCO: GITCO,
+            GITSEC: GITSEC
+          },
+        level: level,
+        MaxDiist: MaxDiist
       });
 
       console.log("Usuario creado y datos agregados a la base de datos bajo el UID de autenticación", user);
+      alert("Usuario creado y datos agregados a la base de datos bajo el UID de autenticación")
       // Redirección o manejo adicional del estado del usuario podría ir aquí
     } catch (error) {
       console.error("Error al registrar el usuario:", error.message);
