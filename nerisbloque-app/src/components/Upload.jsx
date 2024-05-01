@@ -44,16 +44,15 @@ function Upload({ profileImageUrl }) {
 
     const handleSubmit = () => {
         if (!selectedImage || !selectedCourse || !user) return;
-
-        const userName = user.displayName; // Obtén el nombre de usuario del usuario autenticado
-
-        const imageName = `${userName}_${selectedCourse}`;
+    
+        const userId = user.uid; // Obtener el UID del usuario
+        const imageName = `${userId}_${selectedCourse}`;
         const imageRef = storageRef(storage, `images/${imageName}`);
-
+    
         const metadata = {
             contentType: selectedImage.type
         };
-
+    
         uploadBytes(imageRef, imageUpload, metadata).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
                 setImageList((prev) => [...prev, url]);
@@ -67,6 +66,7 @@ function Upload({ profileImageUrl }) {
             console.error("Error al subir la imagen:", error);
         });
     };
+    
 
     useEffect(() => {
         listAll(imageListRef).then((response) => {
