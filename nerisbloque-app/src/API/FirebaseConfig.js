@@ -4,6 +4,9 @@ import { getAuth, setPersistence, browserLocalPersistence } from "firebase/auth"
 import { getDatabase } from "firebase/database";
 import { getAnalytics } from "firebase/analytics";
 import { getStorage } from "firebase/storage";
+import { signInWithEmailAndPassword } from "firebase/auth"; // Importa signInWithEmailAndPassword también
+import { format } from 'date-fns';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -35,4 +38,4 @@ setPersistence(auth, browserLocalPersistence)
     });
 
 // Simplemente exporta los demás que no han sido exportados directamente
-export { auth, database, analytics };
+export { auth, database, analytics, signInWithEmailAndPassword }; // Asegúrate de exportar signInWithEmailAndPassword
