@@ -17,8 +17,9 @@ function CreaCuenta() {
     const PromtE = 0;
     const GITCO = 0;
     const GITSEC = 0;
-    const MaxDiist = 0;
+    const score = 0;
     const level = 0;
+    const rol = 'user';
     const allCompletedCourses = 6;
     const userData = event.target.datos.value;
 
@@ -46,7 +47,8 @@ function CreaCuenta() {
             GITSEC: GITSEC
           },
         level: level,
-        MaxDiist: MaxDiist
+        score: score,
+        rol: rol
       });
 
       console.log("Usuario creado y datos agregados a la base de datos bajo el UID de autenticación", user);

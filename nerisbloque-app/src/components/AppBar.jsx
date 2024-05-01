@@ -46,7 +46,7 @@ function ResponsiveAppBar({ profileImageUrl }) {
   
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "black"}}>
+    <AppBar position="static" sx={{ backgroundColor: "#1B242A"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
             

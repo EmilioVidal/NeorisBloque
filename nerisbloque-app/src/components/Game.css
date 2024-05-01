@@ -1,6 +1,19 @@
 .gamepage {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+    justify-content: center; 
+    position: relative; 
+}
+
+#game-menu {
+    margin-right: auto; 
+    margin-left: auto; 
+}
+
+#HS {
+    position: absolute; 
+    right: 0;
+    top: 0; 
+    background-color: #F7EA5F;
+    padding: 0 30px 30px 30px;
+    border-radius: 0  0 10px 10px;
+}

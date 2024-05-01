@@ -137,8 +137,6 @@ function Usuario({ profileImageUrl, nombreU, datosU, coins}) {
                             })}
                             />
                 </div>
-
-
             </div>
 
             <div id="linea-vertical"></div>

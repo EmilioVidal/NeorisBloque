@@ -1,0 +1,33 @@
+.HS-heading{
+    font-size: 40px;
+    margin: 4px;
+    text-align: center;
+    color: #1B242A;
+}
+
+.filtro-botones{
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
+}
+
+.filtro-botones button{
+    background-color: #EF3FA9;
+    color: white;
+    padding: 5px;
+}
+
+.highS-table{
+    border-collapse: collapse;
+    background-color: #1E242B;
+    color: white;
+    height: fit-content;
+    box-shadow: 0 0 10px 0 #1B242A;
+}
+
+.highS-table th,
+.highS-table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
