@@ -25,11 +25,9 @@
 
 }
 
-#panel-Admin{
-    display: flex;
-}
-#panel-Admin h2{
+#admin-title{
     text-align: center;
     color: #1B242A;
-    font-size: 40px
+    font-size: 40px;
+    text-transform:uppercase;
 }
