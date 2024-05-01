@@ -73,9 +73,11 @@ const ImageList = () => {
     
             await set(userRef, { ...userData, completedCourses });
             console.log('Valor en la base de datos actualizado correctamente.');
+            alert("Se envio correctamente la evaluación")
         } catch (error) {
             console.error('Error al actualizar los metadatos:', error);
         }
+        window.location.reload();
     };
     
     
