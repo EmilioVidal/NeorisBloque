@@ -17,7 +17,7 @@ function Upload({ profileImageUrl }) {
     const courses = [
         { id: 1, name: 'GITCO' },
         { id: 2, name: 'GITSEC' },
-        { id: 3, name: 'PrompE' },
+        { id: 3, name: 'PromtE' },
         // Agrega más opciones de cursos según sea necesario
     ];
 

@@ -46,33 +46,36 @@ const ImageList = () => {
     const handleUpdateMetadata = async (userId, course) => {
         const imageName = `${userId}_${course}`;
         const imageRef = storageRef(storage, `images/${imageName}`);
-
+    
         const newMetadata = {
             customMetadata: {
                 completed: '1', // Cambia el parámetro de false a true
             },
         };
-
+    
         try {
             await updateMetadata(imageRef, newMetadata);
             console.log('Metadatos actualizados correctamente.');
-
+    
             // Actualizar el valor en la base de datos en tiempo real
             const db = getDatabase();
             const userRef = databaseRef(db, `users/${userId}`);
-
+    
             // Obtener los cursos completados actuales del usuario y mantener los demás cursos sin cambios
             const snapshot = await get(userRef);
             const userData = snapshot.val();
             const completedCourses = userData.completedCourses || {};
-            completedCourses[course] += 1;
-
+    
+            // Incrementar el valor o establecerlo en 1 si es la primera vez que se marca como completado
+            completedCourses[course] = (completedCourses[course] || 0) + 1;
+    
             await set(userRef, { ...userData, completedCourses });
             console.log('Valor en la base de datos actualizado correctamente.');
         } catch (error) {
             console.error('Error al actualizar los metadatos:', error);
         }
     };
+    
 
     return (
         <div>
