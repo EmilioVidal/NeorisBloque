@@ -19,7 +19,7 @@ function CreaCuenta() {
     const GITSEC = 0;
     const MaxDiist = 0;
     const level = 0;
-    const allCompletedCourses = 0;
+    const allCompletedCourses = 6;
     const userData = event.target.datos.value;
 
     if (password !== confirmPassword) {
