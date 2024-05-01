@@ -4,6 +4,7 @@ import { ref as storageRef, uploadBytes, listAll, getDownloadURL } from 'firebas
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import AppBar from "../components/AppBar";
 import { storage } from '../API/FirebaseConfig';
+import './ImageList.css';
 
 function Upload({ profileImageUrl }) {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -44,28 +45,36 @@ function Upload({ profileImageUrl }) {
 
     const handleSubmit = () => {
         if (!selectedImage || !selectedCourse || !user) return;
-    
+        
         const userId = user.uid; // Obtener el UID del usuario
         const imageName = `${userId}_${selectedCourse}`;
         const imageRef = storageRef(storage, `images/${imageName}`);
-    
+        
         const metadata = {
             contentType: selectedImage.type
         };
+        
+        uploadBytes(imageRef, imageUpload, metadata)
+            .then((snapshot) => {
+                getDownloadURL(snapshot.ref)
+                    .then((url) => {
+                        setImageList((prev) => [...prev, url]);
+                        alert("Imagen subida correctamente");
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener la URL de descarga:", error);
+                    });
     
-        uploadBytes(imageRef, imageUpload, metadata).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then((url) => {
-                setImageList((prev) => [...prev, url]);
-                alert("Imagen subida correctamente");
+                // Reiniciar valores después de subir la imagen correctamente
+                setSelectedImage(null);
+                setSelectedCourse('');
+                setShowSubmitButton(false);
             })
             .catch(error => {
-                console.error("Error al obtener la URL de descarga:", error);
+                console.error("Error al subir la imagen:", error);
             });
-        })
-        .catch(error => {
-            console.error("Error al subir la imagen:", error);
-        });
     };
+    
     
 
     useEffect(() => {
