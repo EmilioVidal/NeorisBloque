@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { database } from '../API/FirebaseConfig';
 import { ref, onValue } from 'firebase/database';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import { format } from 'date-fns';
+import './UserList.css'; // Importamos el archivo CSS
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -56,13 +48,13 @@ const UserList = () => {
       case 'email':
         setFilterEmail(value);
         break;
-      case 'fullName':
+      case 'nombre':
         setFilterFullName(value);
         break;
-      case 'userData':
+      case 'datos':
         setFilterUserData(value);
         break;
-      case 'coins':
+      case 'monedas':
         setFilterCoins(value);
         break;
       case 'date':
@@ -82,69 +74,60 @@ const UserList = () => {
   );
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-      <div style={{ maxWidth: '800px', width: '100%' }}>
-        <div style={{ marginBottom: '16px' }}>
-          <Button variant="outlined" onClick={() => handleFilterChange('email')}>Filtrar por Correo Electrónico</Button>
-          <Button variant="outlined" onClick={() => handleFilterChange('fullName')}>Filtrar por Nombre Completo</Button>
-          <Button variant="outlined" onClick={() => handleFilterChange('userData')}>Filtrar por Datos del Usuario</Button>
-          <Button variant="outlined" onClick={() => handleFilterChange('coins')}>Filtrar por Monedas</Button>
-          <Button variant="outlined" onClick={() => handleFilterChange('date')}>Filtrar por Último Inicio de Sesión (Fecha)</Button>
-        </div>
-        {(activeFilter === 'email' || activeFilter === 'fullName' || activeFilter === 'userData' || activeFilter === 'coins') && (
-          <TextField
-            label={`Filtrar por ${activeFilter}`}
-            variant="outlined"
-            name={activeFilter}
-            value={
-              activeFilter === 'email' ? filterEmail :
-              activeFilter === 'fullName' ? filterFullName :
-              activeFilter === 'userData' ? filterUserData :
-              filterCoins
-            }
-            onChange={handleFilterValueChange}
-            style={{ marginBottom: '16px', width: '100%' }}
-          />
-        )}
-        {activeFilter === 'date' && (
-          <TextField
-            label="Filtrar por Último Inicio de Sesión (Fecha)"
-            type="date" // Utilizamos type="date" para mostrar solo la fecha sin la hora
-            variant="outlined"
-            name="date"
-            value={filterDate}
-            onChange={handleFilterValueChange}
-            style={{ marginBottom: '16px', width: '100%' }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-        )}
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Correo Electrónico</TableCell>
-                <TableCell>Nombre Completo</TableCell>
-                <TableCell>Datos del Usuario</TableCell>
-                <TableCell>Monedas</TableCell>
-                <TableCell>Último Inicio de Sesión</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {filteredUsers.map((user, index) => (
-                <TableRow key={index}>
-                  <TableCell>{typeof user.email === 'string' ? user.email : 'Correo no disponible'}</TableCell>
-                  <TableCell>{typeof user.fullName === 'string' ? user.fullName : 'Nombre no disponible'}</TableCell>
-                  <TableCell>{typeof user.userData === 'string' ? user.userData : 'No especificado'}</TableCell>
-                  <TableCell>{typeof user.coins === 'number' ? user.coins : 'No especificado'}</TableCell>
-                  <TableCell>{user.lastLogin}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+    <div className="user-list-container">
+      <div className="filter-buttons">
+        <button onClick={() => handleFilterChange('email')}>Filtrar por Correo Electrónico</button>
+        <button onClick={() => handleFilterChange('nombre')}>Filtrar por Nombre Completo</button>
+        <button onClick={() => handleFilterChange('datos')}>Filtrar por Datos del Usuario</button>
+        <button onClick={() => handleFilterChange('monedas')}>Filtrar por Monedas</button>
+        <button onClick={() => handleFilterChange('date')}>Filtrar por Último Inicio de Sesión (Fecha)</button>
       </div>
+      {(activeFilter === 'email' || activeFilter === 'nombre' || activeFilter === 'datos' || activeFilter === 'monedas') && (
+        <input
+          placeholder={`Filtrar por ${activeFilter}`}
+          name={activeFilter}
+          value={
+            activeFilter === 'email' ? filterEmail :
+            activeFilter === 'nombre' ? filterFullName :
+            activeFilter === 'datos' ? filterUserData :
+            filterCoins
+          }
+          onChange={handleFilterValueChange}
+          className="filter-input"
+        />
+      )}
+      {activeFilter === 'date' && (
+        <input
+          placeholder="Filtrar por Último Inicio de Sesión (Fecha)"
+          type="date"
+          name="date"
+          value={filterDate}
+          onChange={handleFilterValueChange}
+          className="filter-input"
+        />
+      )}
+      <table className="user-table">
+        <thead>
+          <tr>
+            <th>Correo Electrónico</th>
+            <th>Nombre Completo</th>
+            <th>Datos del Usuario</th>
+            <th>Monedas</th>
+            <th>Último Inicio de Sesión</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredUsers.map((user, index) => (
+            <tr key={index}>
+              <td>{typeof user.email === 'string' ? user.email : 'Correo no disponible'}</td>
+              <td>{typeof user.fullName === 'string' ? user.fullName : 'Nombre no disponible'}</td>
+              <td>{typeof user.userData === 'string' ? user.userData : 'No especificado'}</td>
+              <td>{typeof user.coins === 'number' ? user.coins : 'No especificado'}</td>
+              <td>{user.lastLogin}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

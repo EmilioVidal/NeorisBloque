@@ -1,0 +1,51 @@
+.user-list-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+  }
+  
+  .filter-buttons {
+    margin-bottom: 16px;
+  }
+  
+  .filter-buttons button {
+    margin-right: 8px;
+    background-color: #000000;
+    color: white;
+  }
+  
+  .filter-input {
+    margin-bottom: 16px;
+    padding: 8px;
+    font-size: 1rem;
+    width: 50%;
+  }
+  
+  .user-table {
+    border-collapse: collapse;
+    background-color: rgb(39, 22, 59);
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    box-shadow: 0 0 100px 0 #000000cf;
+  }
+  
+  .user-table th,
+  .user-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .user-table th {
+    background-color: #000000;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .user-table tbody tr:hover {
+    background-color: #000000;
+    transform: scale(1.02);
+  }
+  
