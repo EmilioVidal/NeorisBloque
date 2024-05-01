@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { database } from '../API/FirebaseConfig';
 import { ref, onValue } from 'firebase/database';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -16,26 +17,26 @@ const UserList = () => {
   const [filterEmail, setFilterEmail] = useState('');
   const [filterFullName, setFilterFullName] = useState('');
   const [filterUserData, setFilterUserData] = useState('');
-  const [filterLastLogin, setFilterLastLogin] = useState('');
+  const [filterCoins, setFilterCoins] = useState('');
+  const [filterDate, setFilterDate] = useState('');
+  const [activeFilter, setActiveFilter] = useState('');
 
   useEffect(() => {
     const usersRef = ref(database, 'users');
     const unsubscribe = onValue(usersRef, (snapshot) => {
       const data = snapshot.val();
       const userList = [];
-for (const key in data) {
-  if (data.hasOwnProperty(key)) {
-    const lastLogin = data[key].lastLogin;
-    const formattedLastLogin = lastLogin ? format(new Date(lastLogin), 'yyyy-MM-dd') : ''; // Formatea la fecha si existe, de lo contrario, asigna una cadena vacía
-    userList.push({
-      email: data[key].email,
-      fullName: data[key].fullName,
-      userData: data[key].userData,
-      lastLogin: formattedLastLogin // Asigna la fecha formateada
-    });
-  }
-}
-      
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          userList.push({
+            email: data[key].email,
+            fullName: data[key].fullName,
+            userData: data[key].userData,
+            coins: data[key].coins,
+            lastLogin: data[key].lastLogin ? format(new Date(data[key].lastLogin), 'yyyy-MM-dd HH:mm:ss') : ''
+          });
+        }
+      }
       setUsers(userList);
     }, {
       onError: (error) => console.error(error)
@@ -43,68 +44,82 @@ for (const key in data) {
 
     // Cleanup subscription on unmount
     return () => unsubscribe();
-    
   }, []);
 
-  const handleFilterEmailChange = (event) => {
-    setFilterEmail(event.target.value);
+  const handleFilterChange = (filterType) => {
+    setActiveFilter(filterType);
   };
 
-  const handleFilterFullNameChange = (event) => {
-    setFilterFullName(event.target.value);
-  };
-
-  const handleFilterUserDataChange = (event) => {
-    setFilterUserData(event.target.value);
-  };
-
-  const handleFilterLastLoginChange = (event) => {
-    setFilterLastLogin(event.target.value);
+  const handleFilterValueChange = (event) => {
+    const { name, value } = event.target;
+    switch (name) {
+      case 'email':
+        setFilterEmail(value);
+        break;
+      case 'fullName':
+        setFilterFullName(value);
+        break;
+      case 'userData':
+        setFilterUserData(value);
+        break;
+      case 'coins':
+        setFilterCoins(value);
+        break;
+      case 'date':
+        setFilterDate(value);
+        break;
+      default:
+        break;
+    }
   };
 
   const filteredUsers = users.filter(user =>
     (!filterEmail || (user.email && user.email.toLowerCase().startsWith(filterEmail.toLowerCase()))) &&
     (!filterFullName || (user.fullName && user.fullName.toLowerCase().startsWith(filterFullName.toLowerCase()))) &&
     (!filterUserData || (user.userData && user.userData.toLowerCase().startsWith(filterUserData.toLowerCase()))) &&
-    (!filterLastLogin || (user.lastLogin && user.lastLogin === filterLastLogin)) // Filtra por fecha de último inicio de sesión
+    (!filterCoins || (user.coins != null && user.coins.toString().startsWith(filterCoins))) &&
+    (!filterDate || (user.lastLogin && user.lastLogin.startsWith(filterDate)))
   );
-  
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
       <div style={{ maxWidth: '800px', width: '100%' }}>
-        <TextField
-          label="Filtrar por Correo Electrónico"
-          variant="outlined"
-          value={filterEmail}
-          onChange={handleFilterEmailChange}
-          style={{ marginBottom: '16px' }}
-        />
-        <TextField
-          label="Filtrar por Nombre Completo"
-          variant="outlined"
-          value={filterFullName}
-          onChange={handleFilterFullNameChange}
-          style={{ marginBottom: '16px' }}
-        />
-        <TextField
-          label="Filtrar por Datos del Usuario"
-          variant="outlined"
-          value={filterUserData}
-          onChange={handleFilterUserDataChange}
-          style={{ marginBottom: '16px' }}
-        />
-<TextField
-  label="Filtrar por Última Fecha de Acceso"
-  type="date"
-  variant="outlined"
-  value={filterLastLogin}
-  onChange={(event) => setFilterLastLogin(event.target.value)}
-  style={{ marginBottom: '16px' }}
-  InputLabelProps={{
-    shrink: true,
-  }}
-/>
+        <div style={{ marginBottom: '16px' }}>
+          <Button variant="outlined" onClick={() => handleFilterChange('email')}>Filtrar por Correo Electrónico</Button>
+          <Button variant="outlined" onClick={() => handleFilterChange('fullName')}>Filtrar por Nombre Completo</Button>
+          <Button variant="outlined" onClick={() => handleFilterChange('userData')}>Filtrar por Datos del Usuario</Button>
+          <Button variant="outlined" onClick={() => handleFilterChange('coins')}>Filtrar por Monedas</Button>
+          <Button variant="outlined" onClick={() => handleFilterChange('date')}>Filtrar por Último Inicio de Sesión (Fecha)</Button>
+        </div>
+        {(activeFilter === 'email' || activeFilter === 'fullName' || activeFilter === 'userData' || activeFilter === 'coins') && (
+          <TextField
+            label={`Filtrar por ${activeFilter}`}
+            variant="outlined"
+            name={activeFilter}
+            value={
+              activeFilter === 'email' ? filterEmail :
+              activeFilter === 'fullName' ? filterFullName :
+              activeFilter === 'userData' ? filterUserData :
+              filterCoins
+            }
+            onChange={handleFilterValueChange}
+            style={{ marginBottom: '16px', width: '100%' }}
+          />
+        )}
+        {activeFilter === 'date' && (
+          <TextField
+            label="Filtrar por Último Inicio de Sesión (Fecha)"
+            type="date" // Utilizamos type="date" para mostrar solo la fecha sin la hora
+            variant="outlined"
+            name="date"
+            value={filterDate}
+            onChange={handleFilterValueChange}
+            style={{ marginBottom: '16px', width: '100%' }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        )}
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
@@ -112,7 +127,8 @@ for (const key in data) {
                 <TableCell>Correo Electrónico</TableCell>
                 <TableCell>Nombre Completo</TableCell>
                 <TableCell>Datos del Usuario</TableCell>
-                <TableCell>Último Inicio de Sesión</TableCell> 
+                <TableCell>Monedas</TableCell>
+                <TableCell>Último Inicio de Sesión</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -121,16 +137,13 @@ for (const key in data) {
                   <TableCell>{typeof user.email === 'string' ? user.email : 'Correo no disponible'}</TableCell>
                   <TableCell>{typeof user.fullName === 'string' ? user.fullName : 'Nombre no disponible'}</TableCell>
                   <TableCell>{typeof user.userData === 'string' ? user.userData : 'No especificado'}</TableCell>
-                  <TableCell>{typeof user.lastLogin === 'string' ? user.lastLogin : 'No disponible'}</TableCell> 
+                  <TableCell>{typeof user.coins === 'number' ? user.coins : 'No especificado'}</TableCell>
+                  <TableCell>{user.lastLogin}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
-
-
-
-        
       </div>
     </div>
   );
