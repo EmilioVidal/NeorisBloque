@@ -5,6 +5,9 @@ import Footer from "../components/Footer";
 import noerisLogo from '../img/NEORIS logo dark.png';
 import { auth } from '../API/FirebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { serverTimestamp, ref, set } from 'firebase/database';
+import { database } from '../API/FirebaseConfig';
+
 
 function Bienvenido({setEmail, setUser}) {
     const navigate = useNavigate();
@@ -23,7 +26,8 @@ function Bienvenido({setEmail, setUser}) {
           setEmail(email);
           setUser(newUser);  
           console.log(email)      
-
+          const lastLoginRef = ref(database, `users/${newUser.uid}/lastLogin`);
+          await set(lastLoginRef, serverTimestamp());
               //aqui es donde se piden los datos del usuario en la base de datos
           //despues hacer un set user donde mande los datos del usuario 
           navigate("/game"); // Aquí utilizamos navigate para redirigir al usuario
