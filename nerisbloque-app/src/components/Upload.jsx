@@ -15,9 +15,9 @@ function Upload({ profileImageUrl }) {
     const [user, setUser] = useState(null);
 
     const courses = [
-        { id: 1, name: 'GPT' },
-        { id: 2, name: 'Copilot' },
-        { id: 3, name: 'IA' },
+        { id: 1, name: 'GITCO' },
+        { id: 2, name: 'GITSEC' },
+        { id: 3, name: 'PrompE' },
         // Agrega más opciones de cursos según sea necesario
     ];
 

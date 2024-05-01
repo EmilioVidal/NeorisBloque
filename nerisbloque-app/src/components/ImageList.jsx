@@ -7,10 +7,10 @@ const ImageList = () => {
     const [imageList, setImageList] = useState([]);
 
     useEffect(() => {
-        const imageListRef = storageRef(storage, "images/");
+        const imageListRef = storageRef(storage, 'images/');
 
         listAll(imageListRef)
-            .then((response) => {
+            .then(async (response) => {
                 const promises = response.items.map((item) => {
                     return getDownloadURL(item).then((url) => {
                         // Obtener el nombre de usuario y el curso del nombre de la imagen
@@ -19,12 +19,27 @@ const ImageList = () => {
                     });
                 });
 
-                Promise.all(promises).then((images) => {
-                    setImageList(images);
+                const images = await Promise.all(promises);
+
+                // Obtener los nombres de usuario correspondientes a los userIds
+                const db = getDatabase();
+                const userNamesPromises = images.map(({ userId }) => {
+                    const userRef = databaseRef(db, `users/${userId}/fullName`); // Cambiado a fullName
+                    return get(userRef).then((snapshot) => snapshot.val());
                 });
+
+                const userNames = await Promise.all(userNamesPromises);
+
+                // Combinar la información de las imágenes con los nombres de usuario
+                const imagesWithNames = images.map((image, index) => ({
+                    ...image,
+                    userName: userNames[index] || 'Nombre Desconocido', // Usar "Nombre Desconocido" si no hay nombre
+                }));
+
+                setImageList(imagesWithNames);
             })
             .catch((error) => {
-                console.error("Error al listar las imágenes:", error);
+                console.error('Error al listar las imágenes:', error);
             });
     }, []);
 
@@ -34,13 +49,13 @@ const ImageList = () => {
 
         const newMetadata = {
             customMetadata: {
-                completed: '1'    // Cambia el parámetro de false a true
-            }
+                completed: '1', // Cambia el parámetro de false a true
+            },
         };
 
         try {
             await updateMetadata(imageRef, newMetadata);
-            console.log("Metadatos actualizados correctamente.");
+            console.log('Metadatos actualizados correctamente.');
 
             // Actualizar el valor en la base de datos en tiempo real
             const db = getDatabase();
@@ -53,9 +68,9 @@ const ImageList = () => {
             completedCourses[course] += 1;
 
             await set(userRef, { ...userData, completedCourses });
-            console.log("Valor en la base de datos actualizado correctamente.");
+            console.log('Valor en la base de datos actualizado correctamente.');
         } catch (error) {
-            console.error("Error al actualizar los metadatos:", error);
+            console.error('Error al actualizar los metadatos:', error);
         }
     };
 
@@ -66,7 +81,7 @@ const ImageList = () => {
                 {imageList.map((image, index) => (
                     <div key={index} className="image-item">
                         <img src={image.url} alt={`Imagen_${index}`} />
-                        <p>{`Usuario: ${image.userId}, Curso: ${image.course}`}</p>
+                        <p>{`Usuario: ${image.userName}, Curso: ${image.course}`}</p>
                         <button onClick={() => handleUpdateMetadata(image.userId, image.course)}>Marcar como completada</button>
                     </div>
                 ))}
