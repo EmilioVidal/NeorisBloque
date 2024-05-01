@@ -54,15 +54,8 @@ function AdminLog() {
             <p>Contraseña</p>
             <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
           </div>
+            <button type="submit" className='inicialS'>Iniciar sesión</button>
         </div>
-      
-        <div id='post-login'>
-          <label>
-            <input type="checkbox"/> Recuérdame
-          </label>
-          <a href="#">Olvidé mi contraseña</a>
-        </div>
-        <button type="submit" className='inicialS'>Iniciar sesión</button>
       </form>
       {error && <p>{error}</p>}
     </div>

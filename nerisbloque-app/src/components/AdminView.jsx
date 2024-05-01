@@ -13,10 +13,10 @@ function AdminView({nombreU}) {
          <div id= "AdminTopB">
                 <img src={NeorisPP} alt="foto de la compañia" /><span>ADMIN</span>
         </div>
+        <h2 id="admin-title">Panel de Administración</h2>
       <div id='panel-Admin'>
-        <h2>Panel de Administración</h2>
         <h3>Nombre del Administrador:</h3>
-        <h3>{nombreU}</h3>
+        <h4>{nombreU}</h4>
       </div>
       <div id='tabla'>
         <UserList />
