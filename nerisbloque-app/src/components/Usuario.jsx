@@ -11,13 +11,14 @@ import './Usuario.css'
 import DatosUsuario from './DatosUsuario';
 
 
-function Usuario({ profileImageUrl, nombreU, datosU, coins}) {
-    let nivelU = 60;
+function Usuario({ profileImageUrl, nombreU, datosU, coins, allCompletedCourses, PromtE, GITCO, GITSEC, level}) {
+    let maxLevels = 5
     //estos son cuantos cursos se han completado de cada cosa
-    let percentageTotal = 4;
-    let percentagePE = 2;
-    let percentageGC = 1;
-    let percentageGAS = 1;
+    let percentageTotal = PromtE + GITCO + GITSEC;
+    let TotalPromtE = 4
+    let TotalGITCO = 4
+    let TotalGITSEC = 4
+
 
 
   return (
@@ -52,8 +53,8 @@ function Usuario({ profileImageUrl, nombreU, datosU, coins}) {
                 <div className='circP'>
                     <h3 className='title-curso'>En todos los cursos</h3>
                     <CircularProgressbar id="porc-toal"
-                        value={Math.round((percentageTotal/7)*100)}
-                        text={`${Math.round((percentageTotal/7)*100)}%`}
+                        value={Math.round((percentageTotal/allCompletedCourses)*100)}
+                        text={`${Math.round((percentageTotal/allCompletedCourses)*100)}%`}
                         styles={buildStyles({
                             // Rotation of path and trail, in number of turns (0-1)
                             rotation: 0,
@@ -64,7 +65,7 @@ function Usuario({ profileImageUrl, nombreU, datosU, coins}) {
                             // How long animation takes to go from one percentage to another, in seconds
                             pathTransitionDuration: 0.5,
                             // Colors
-                            pathColor: `rgba(62, 152, 199, ${Math.round((percentageTotal/7)*100) / 100})`,
+                            pathColor: `rgba(62, 152, 199, ${Math.round((percentageTotal/allCompletedCourses)*100) / 100})`,
                             textColor: '#f88',
                             trailColor: '#d6d6d6',
                             backgroundColor: '#3e98c7',
@@ -74,8 +75,8 @@ function Usuario({ profileImageUrl, nombreU, datosU, coins}) {
                 <div className='circP'>
                     <h3 className='title-curso'>Promt Engineering</h3>
                     <CircularProgressbar id="porc-PE"
-                            value={Math.round((percentagePE/3)*100)}
-                            text={`${Math.round((percentagePE/3)*100)}%`}
+                            value={Math.round((PromtE/TotalPromtE)*100)}
+                            text={`${Math.round((PromtE/TotalPromtE)*100)}%`}
                             styles={buildStyles({
                                 // Rotation of path and trail, in number of turns (0-1)
                                 rotation: 0,
@@ -86,7 +87,7 @@ function Usuario({ profileImageUrl, nombreU, datosU, coins}) {
                                 // How long animation takes to go from one percentage to another, in seconds
                                 pathTransitionDuration: 0.5,
                                 // Colors
-                                pathColor: `rgba(62, 152, 199, ${Math.round((percentagePE/3)*100) / 100})`,
+                                pathColor: `rgba(62, 152, 199, ${Math.round((PromtE/TotalPromtE)*100) / 100})`,
                                 textColor: '#f88',
                                 trailColor: '#d6d6d6',
                                 backgroundColor: '#3e98c7',
@@ -96,8 +97,8 @@ function Usuario({ profileImageUrl, nombreU, datosU, coins}) {
                 <div className='circP'>
                     <h3 className='title-curso'>GitHub Copilot</h3>
                     <CircularProgressbar
-                            value={Math.round((percentageGC/2)*100)}
-                            text={`${Math.round((percentageGC/2)*100)}%`}
+                            value={Math.round((GITCO/TotalGITCO)*100)}
+                            text={`${Math.round((GITCO/TotalGITCO)*100)}%`}
                             styles={buildStyles({
                                 // Rotation of path and trail, in number of turns (0-1)
                                 rotation: 0,
@@ -108,7 +109,7 @@ function Usuario({ profileImageUrl, nombreU, datosU, coins}) {
                                 // How long animation takes to go from one percentage to another, in seconds
                                 pathTransitionDuration: 0.5,
                                 // Colors
-                                pathColor: `rgba(62, 152, 199, ${Math.round((percentageGC/2)*100) / 100})`,
+                                pathColor: `rgba(62, 152, 199, ${Math.round((GITCO/TotalGITCO)*100) / 100})`,
                                 textColor: '#f88',
                                 trailColor: '#d6d6d6',
                                 backgroundColor: '#3e98c7',
@@ -118,8 +119,8 @@ function Usuario({ profileImageUrl, nombreU, datosU, coins}) {
                 <div className='circP'>
                     <h3 className='title-curso'>GitHub Advanced Security</h3>
                     <CircularProgressbar
-                            value={Math.round((percentageGAS/2)*100)}
-                            text={`${Math.round((percentageGAS/2)*100)}%`}
+                            value={Math.round((GITSEC/TotalGITSEC)*100)}
+                            text={`${Math.round((GITSEC/TotalGITSEC)*100)}%`}
                             styles={buildStyles({
                                 // Rotation of path and trail, in number of turns (0-1)
                                 rotation: 0,
@@ -130,7 +131,7 @@ function Usuario({ profileImageUrl, nombreU, datosU, coins}) {
                                 // How long animation takes to go from one percentage to another, in seconds
                                 pathTransitionDuration: 0.5,
                                 // Colors
-                                pathColor: `rgba(62, 152, 199, ${Math.round((percentageGAS/2)*100) / 100})`,
+                                pathColor: `rgba(62, 152, 199, ${Math.round((GITSEC/TotalGITSEC)*100) / 100})`,
                                 textColor: '#f88',
                                 trailColor: '#d6d6d6',
                                 backgroundColor: '#3e98c7',
@@ -154,7 +155,7 @@ function Usuario({ profileImageUrl, nombreU, datosU, coins}) {
         <div id='nivel-center'>
             <div id='nivel-edit'>
                 <h3>Nivel</h3>
-                <progress value={nivelU} max="100"></progress>   
+                <progress value={level} max={maxLevels}></progress><span>{level}/{maxLevels}</span> 
             </div>
             
         </div>

@@ -76,15 +76,24 @@ function App() {
         const userList = [];
         for (const key in data) {
           if (data.hasOwnProperty(key)) {
+            const userData = data[key];
+            const completedCourses = userData.completedCourses || {}; // Asegurarse de que completedCourses esté definido
             userList.push({
-              email: data[key].email,
-              fullName: data[key].fullName,
-              userData: data[key].userData,
-              coins: data[key].coins
+                email: userData.email,
+                fullName: userData.fullName,
+                userData: userData.userData,
+                coins: userData.coins,
+                allCompletedCourses: userData.allCompletedCourses,
+                PromtE: userData.PromtE !== '' ? userData.PromtE : 'No especificado',
+                GITCO: userData.GITCO !== '' ? userData.GITCO : 'No especificado',
+                GITSEC: userData.GITSEC !== '' ? userData.GITSEC : 'No especificado',
+                level: userData.level,
+                score: userData.score,
+                rol:userData.rol
             });
           }
         }
-        console.log(userList);
+        console.log(userList, "refrexh");
         setUsers(userList);
       }, {
         onError: (error) => console.error(error)
@@ -93,10 +102,12 @@ function App() {
       return () => unsubscribe();
     }, []); // La dependencia vacía asegura que esto se ejecute solo una vez
   
+    //este use efecto lo que hace es que busca entre la base de datos que obtuvo y ve que tenga el correo que se puso cuando se inicio sesión
     useEffect(() => {
         if (email) {
           const userData = users.find(user => user.email === email);
           console.log('Nombre del usuario:', userData ? userData.fullName : 'Usuario no encontrado');
+          console.log(userData.PromtE,"owo")
           setUserData(userData);
         }
       }, [email, users]);
@@ -114,7 +125,7 @@ function App() {
                 <Route path="/creaCuenta" element={<CreaCuenta />} />
                 <Route path="/game" element={<Game profileImageUrl={profileImageUrl} user={user} coins={userData ? userData.coins : 0} />} />
                 <Route path="/adminLog" element={<AdminLog />} />
-                <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} nombreU={userData ? userData.fullName : ""} datosU={userData ? userData.userData : ""} coins={userData ? userData.coins : 0} />} />
+                <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} nombreU={userData ? userData.fullName : ""} datosU={userData ? userData.userData : ""} coins={userData ? userData.coins : 0} allCompletedCourses={userData ? userData.allCompletedCourses : 0} PromtE={userData ? userData.PromtE : 0} GITCO={userData ? userData.GITCO : 0} GITSEC={userData ? userData.GITSEC : 0} level={userData ? userData.level : 0}/>} />
                 <Route path="/edit" element={<EditP user={user} profileImageUrl={profileImageUrl} setProfileImageUrl={setProfileImageUrl} nombreU={userData ? userData.fullName : ""} setNombreU={(nombre) => setUserData({...userData, fullName: nombre})} datosU={userData ? userData.userData : ""} setDatosU={(datos) => setUserData({...userData, userData: datos})} userData={userData} setUserData={setUserData} />} />
                 <Route path="/adminView" element={<AdminView />} />
                 <Route path="/rewards" element={<Rewards profileImageUrl={profileImageUrl} coins={userData ? userData.coins : 0}/>} />

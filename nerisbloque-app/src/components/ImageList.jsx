@@ -43,10 +43,10 @@ const ImageList = () => {
             });
     }, []);
 
-    const handleUpdateMetadata = async (userId, course, completed) => {
-        const imageName = `${userId}_${course}`;
+    const handleUpdateMetadata = async (userId, courseName, completed) => {
+        const imageName = `${userId}_${courseName}`;
         const imageRef = storageRef(storage, `images/${imageName}`);
-    
+        
         if (completed) {
             const newMetadata = {
                 customMetadata: {
@@ -57,21 +57,18 @@ const ImageList = () => {
             try {
                 await updateMetadata(imageRef, newMetadata);
                 console.log('Metadatos actualizados correctamente.');
-
+    
                 await deleteObject(imageRef); // Utilizar deleteObject() para eliminar la imagen de Firebase Storage
                 console.log('Imagen eliminada de Firebase Storage.');
         
-                // Actualizar el valor en la base de datos en tiempo real
+                // Actualizar el valor del curso en la base de datos en tiempo real
                 const db = getDatabase();
                 const userRef = databaseRef(db, `users/${userId}`);
                 const snapshot = await get(userRef);
                 const userData = snapshot.val();
-                const completedCourses = userData.completedCourses || {};
-        
-                // Incrementar el valor o establecerlo en 1 si es la primera vez que se marca como completado
-                completedCourses[course] = (completedCourses[course] || 0) + 1;
-        
-                await set(userRef, { ...userData, completedCourses });
+                let currentCount = userData[courseName] || 0;
+                currentCount += 1; // Incrementar el valor del curso
+                await set(userRef, { ...userData, [courseName]: currentCount });
             
                 console.log('Valor en la base de datos actualizado correctamente.');
                 alert("Se envió correctamente la evaluación");
@@ -89,7 +86,6 @@ const ImageList = () => {
         }
         window.location.reload();
     };
-    
     
 
     return (

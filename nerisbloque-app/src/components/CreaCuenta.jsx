@@ -41,11 +41,9 @@ function CreaCuenta() {
         userData: userData,
         coins: coins,
         allCompletedCourses: allCompletedCourses,
-        completedCourses: {
-            PromtE: PromtE,
-            GITCO: GITCO,
-            GITSEC: GITSEC
-          },
+        PromtE: PromtE,
+        GITCO: GITCO,
+        GITSEC: GITSEC,
         level: level,
         score: score,
         rol: rol
