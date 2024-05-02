@@ -1,19 +1,16 @@
+#HS {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+    font-family: 'Roboto', sans-serif;
+    margin: 10px;
+}
+
 .gamepage {
     display: flex;
-    justify-content: center; 
-    position: relative; 
-}
-
-#game-menu {
-    margin-right: auto; 
-    margin-left: auto; 
-}
-
-#HS {
-    position: absolute; 
-    right: 0;
-    top: 0; 
-    background-color: #F7EA5F;
-    padding: 0 30px 30px 30px;
-    border-radius: 0  0 10px 10px;
+    justify-content: center;
+    position: relative;
+    flex-direction: row;
 }

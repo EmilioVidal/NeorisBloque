@@ -29,7 +29,7 @@
     color: white;
     width: fit-content;
     height: fit-content;
-    box-shadow: 0 0 100px 0 #000000cf;
+    box-shadow: #000000 0px 0px 10px 0px;
   }
   
   .user-table th,
@@ -48,4 +48,5 @@
     background-color: #000000;
     transform: scale(1.02);
   }
+  
   
