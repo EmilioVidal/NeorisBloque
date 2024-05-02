@@ -23,7 +23,7 @@ function HighScore() {
                         coins: data[key].coins,
                         lastLogin: data[key].lastLogin,
                         score: data[key].score,
-                        level: data[key].level,
+                        powerUps: data[key].powerUps,
                         rol: data[key].rol
                     });
                 }
@@ -79,7 +79,7 @@ function HighScore() {
                             <tr key={index} id="infoT">
                                 <td>{typeof user.fullName === 'string' ? user.fullName : 'Nombre no disponible'}</td>
                                 <td>{typeof user.coins === 'number' ? user.coins : 'No especificado'}</td>
-                                <td>{typeof user.level === 'number' ? user.level : 'No especificado'}</td>
+                                <td>{typeof user.powerUps === 'number' ? user.powerUps : 'No especificado'}</td>
                                 <td>{typeof user.score === 'number' ? user.score.toFixed(2) : 'No especificado'}</td>
                             </tr>
                         ))}
