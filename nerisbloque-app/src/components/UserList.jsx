@@ -35,7 +35,7 @@ const UserList = () => {
             GITSEC: data[key].GITSEC,
             PromtE: data[key].PromtE,
             allCompletedCourses: data[key].allCompletedCourses,
-            level: data[key].level,
+            powerUps: data[key].powerUps,
             score: data[key].score,
             rol: data[key].rol,
             lastLogin: data[key].lastLogin ? format(new Date(data[key].lastLogin), 'yyyy-MM-dd HH:mm:ss') : ''
@@ -105,7 +105,7 @@ const UserList = () => {
     (!filterCourseGITSEC || (user.GITSEC != null && user.GITSEC >= parseInt(filterCourseGITSEC))) && // Filtrar cursos GITSEC mayores o iguales
     (!filterCoursePromtE || (user.PromtE != null && user.PromtE >= parseInt(filterCoursePromtE))) && // Filtrar cursos PromtE mayores o iguales
     (!filterCourse || (user.allCompletedCourses != null && user.allCompletedCourses >= parseInt(filterCourse))) && // Filtrar todos los cursos completados mayores o iguales
-    (!filterLevel || (user.level != null && user.level >= parseInt(filterLevel))) && // Filtrar nivel mayor o igual
+    (!filterLevel || (user.powerUps != null && user.powerUps >= parseInt(filterLevel))) && // Filtrar nivel mayor o igual
     (!filterScore || (user.score != null && user.score >= parseInt(filterScore))) && // Filtrar puntuación mayor o igual
     (!user.rol || user.rol.toLowerCase() !== 'admin') &&
     (!filterDate || (user.lastLogin && user.lastLogin.startsWith(filterDate)))
@@ -187,7 +187,7 @@ const UserList = () => {
               <td>{typeof user.GITSEC === 'number' ? user.GITSEC : 'No especificado'}</td>
               <td>{typeof user.PromtE === 'number' ? user.PromtE : 'No especificado'}</td>
               <td>{typeof user.allCompletedCourses === 'number' ? user.allCompletedCourses : 'No especificado'}</td>
-              <td>{typeof user.level === 'number' ? user.level : 'No especificado'}</td>
+              <td>{typeof user.powerUps === 'number' ? user.powerUps : 'No especificado'}</td>
               <td>{typeof user.score === 'number' ? user.score.toFixed(2) : 'No especificado'}</td>
               <td>{user.lastLogin}</td>
             </tr>
