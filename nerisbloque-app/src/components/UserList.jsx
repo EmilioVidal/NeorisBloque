@@ -11,6 +11,12 @@ const UserList = () => {
   const [filterUserData, setFilterUserData] = useState('');
   const [filterCoins, setFilterCoins] = useState('');
   const [filterDate, setFilterDate] = useState('');
+  const [filterCourseGITCO, setFilterCourseGITCO] = useState('');
+  const [filterCourseGITSEC, setFilterCourseGITSEC] = useState('');
+  const [filterCoursePromtE, setFilterCoursePromtE] = useState('');
+  const [filterCourse, setFilterCourse] = useState('');
+  const [filterLevel, setFilterLevel] = useState('');
+  const [filterScore, setFilterScore] = useState('');
   const [activeFilter, setActiveFilter] = useState('');
 
   useEffect(() => {
@@ -25,6 +31,12 @@ const UserList = () => {
             fullName: data[key].fullName,
             userData: data[key].userData,
             coins: data[key].coins,
+            GITCO: data[key].GITCO,
+            GITSEC: data[key].GITSEC,
+            PromtE: data[key].PromtE,
+            allCompletedCourses: data[key].allCompletedCourses,
+            level: data[key].level,
+            score: data[key].score,
             lastLogin: data[key].lastLogin ? format(new Date(data[key].lastLogin), 'yyyy-MM-dd HH:mm:ss') : ''
           });
         }
@@ -60,6 +72,24 @@ const UserList = () => {
       case 'date':
         setFilterDate(value);
         break;
+      case 'GITCO':
+        setFilterCourseGITCO(value);
+        break;
+      case 'GITSEC':
+        setFilterCourseGITSEC(value);
+        break;
+      case 'PromtE':
+        setFilterCoursePromtE(value);
+        break;
+      case 'cursos':
+        setFilterCourse(value);
+        break;
+      case 'nivel':
+        setFilterLevel(value);
+        break;
+      case 'puntuacion':
+        setFilterScore(value);
+        break;
       default:
         break;
     }
@@ -69,9 +99,16 @@ const UserList = () => {
     (!filterEmail || (user.email && user.email.toLowerCase().startsWith(filterEmail.toLowerCase()))) &&
     (!filterFullName || (user.fullName && user.fullName.toLowerCase().startsWith(filterFullName.toLowerCase()))) &&
     (!filterUserData || (user.userData && user.userData.toLowerCase().startsWith(filterUserData.toLowerCase()))) &&
-    (!filterCoins || (user.coins != null && user.coins.toString().startsWith(filterCoins))) &&
+    (!filterCoins || (user.coins != null && user.coins >= parseInt(filterCoins))) && // Filtrar monedas mayores o iguales
+    (!filterCourseGITCO || (user.GITCO != null && user.GITCO >= parseInt(filterCourseGITCO))) && // Filtrar cursos GITCO mayores o iguales
+    (!filterCourseGITSEC || (user.GITSEC != null && user.GITSEC >= parseInt(filterCourseGITSEC))) && // Filtrar cursos GITSEC mayores o iguales
+    (!filterCoursePromtE || (user.PromtE != null && user.PromtE >= parseInt(filterCoursePromtE))) && // Filtrar cursos PromtE mayores o iguales
+    (!filterCourse || (user.allCompletedCourses != null && user.allCompletedCourses >= parseInt(filterCourse))) && // Filtrar todos los cursos completados mayores o iguales
+    (!filterLevel || (user.level != null && user.level >= parseInt(filterLevel))) && // Filtrar nivel mayor o igual
+    (!filterScore || (user.score != null && user.score >= parseInt(filterScore))) && // Filtrar puntuación mayor o igual
     (!filterDate || (user.lastLogin && user.lastLogin.startsWith(filterDate)))
   );
+  
 
   return (
     <div className="user-list-container">
@@ -80,9 +117,18 @@ const UserList = () => {
         <button onClick={() => handleFilterChange('nombre')}>Filtrar por Nombre Completo</button>
         <button onClick={() => handleFilterChange('datos')}>Filtrar por Datos del Usuario</button>
         <button onClick={() => handleFilterChange('monedas')}>Filtrar por Monedas</button>
+        <button onClick={() => handleFilterChange('GITCO')}>Filtrar por Cursos de Github Copilot</button>
+        <button onClick={() => handleFilterChange('GITSEC')}>Cursos de Github Advance Security</button>
+        <button onClick={() => handleFilterChange('PromtE')}>Filtrar por Cursos de Promt Engineering</button>
+        <button onClick={() => handleFilterChange('cursos')}>Filtrar por Curso Completado</button>
+        <button onClick={() => handleFilterChange('nivel')}>Filtrar por Nivel</button>
+        <button onClick={() => handleFilterChange('puntuacion')}>Filtrar por Puntuación</button>
         <button onClick={() => handleFilterChange('date')}>Filtrar por Último Inicio de Sesión (Fecha)</button>
       </div>
-      {(activeFilter === 'email' || activeFilter === 'nombre' || activeFilter === 'datos' || activeFilter === 'monedas') && (
+      {(activeFilter === 'email' || activeFilter === 'nombre' || activeFilter === 'datos' || activeFilter === 'monedas' || activeFilter === 'cursos' || activeFilter === 'nivel' || activeFilter === 'puntuacion' ||
+      activeFilter === 'GITCO' ||
+      activeFilter === 'GITSEC' ||
+      activeFilter === 'PromtE' ) && (
         <input
           placeholder={`Filtrar por ${activeFilter}`}
           name={activeFilter}
@@ -90,6 +136,12 @@ const UserList = () => {
             activeFilter === 'email' ? filterEmail :
             activeFilter === 'nombre' ? filterFullName :
             activeFilter === 'datos' ? filterUserData :
+            activeFilter === 'GITCO' ? filterCourseGITCO :
+            activeFilter === 'GITSEC' ? filterCourseGITSEC :
+            activeFilter === 'PromtE' ? filterCoursePromtE :
+            activeFilter === 'cursos' ? filterCourse :
+            activeFilter === 'nivel' ? filterLevel :
+            activeFilter === 'puntuacion' ? filterScore :
             filterCoins
           }
           onChange={handleFilterValueChange}
@@ -113,6 +165,12 @@ const UserList = () => {
             <th>Nombre Completo</th>
             <th>Datos del Usuario</th>
             <th>Monedas</th>
+            <th>Cursos de Github Copilot</th>
+            <th>Cursos de Github Advance Security</th>
+            <th>Cursos de Promt Engineering</th>
+            <th>Cursos totales Completado</th>
+            <th>Nivel</th>
+            <th>Puntuación</th>
             <th>Último Inicio de Sesión</th>
           </tr>
         </thead>
@@ -123,6 +181,12 @@ const UserList = () => {
               <td>{typeof user.fullName === 'string' ? user.fullName : 'Nombre no disponible'}</td>
               <td>{typeof user.userData === 'string' ? user.userData : 'No especificado'}</td>
               <td>{typeof user.coins === 'number' ? user.coins : 'No especificado'}</td>
+              <td>{typeof user.GITCO === 'number' ? user.GITCO : 'No especificado'}</td>
+              <td>{typeof user.GITSEC === 'number' ? user.GITSEC : 'No especificado'}</td>
+              <td>{typeof user.PromtE === 'number' ? user.PromtE : 'No especificado'}</td>
+              <td>{typeof user.allCompletedCourses === 'number' ? user.allCompletedCourses : 'No especificado'}</td>
+              <td>{typeof user.level === 'number' ? user.level : 'No especificado'}</td>
+              <td>{typeof user.score === 'number' ? user.score.toFixed(2) : 'No especificado'}</td>
               <td>{user.lastLogin}</td>
             </tr>
           ))}
