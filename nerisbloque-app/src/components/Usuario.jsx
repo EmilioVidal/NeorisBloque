@@ -11,14 +11,13 @@ import './Usuario.css'
 import DatosUsuario from './DatosUsuario';
 
 
-function Usuario({ profileImageUrl, nombreU, datosU, coins, allCompletedCourses, PromtE, GITCO, GITSEC, level}) {
-    let maxLevels = 5
+function Usuario({ profileImageUrl, nombreU, datosU, coins, allCompletedCourses, PromtE, GITCO, GITSEC, powerUps}) {
+    let maxPowerUps = 3
     //estos son cuantos cursos se han completado de cada cosa
-    let percentageTotal = PromtE + GITCO + GITSEC;
+    let totalCursos = 12;
     let TotalPromtE = 4
     let TotalGITCO = 4
     let TotalGITSEC = 4
-
 
 
   return (
@@ -53,8 +52,8 @@ function Usuario({ profileImageUrl, nombreU, datosU, coins, allCompletedCourses,
                 <div className='circP'>
                     <h3 className='title-curso'>En todos los cursos</h3>
                     <CircularProgressbar id="porc-toal"
-                        value={Math.round((percentageTotal/allCompletedCourses)*100)}
-                        text={`${Math.round((percentageTotal/allCompletedCourses)*100)}%`}
+                        value={Math.round((allCompletedCourses/totalCursos)*100)}
+                        text={`${Math.round((allCompletedCourses/totalCursos)*100)}%`}
                         styles={buildStyles({
                             // Rotation of path and trail, in number of turns (0-1)
                             rotation: 0,
@@ -65,10 +64,10 @@ function Usuario({ profileImageUrl, nombreU, datosU, coins, allCompletedCourses,
                             // How long animation takes to go from one percentage to another, in seconds
                             pathTransitionDuration: 0.5,
                             // Colors
-                            pathColor: `rgba(62, 152, 199, ${Math.round((percentageTotal/allCompletedCourses)*100) / 100})`,
+                            pathColor: `rgba(62, 152, 199, ${Math.round((allCompletedCourses/totalCursos)*100) / 100})`,
                             textColor: '#f88',
                             trailColor: '#d6d6d6',
-                            backgroundColor: '#3e98c7',
+                            backgroundColor: '#3e98c7'
                         })}
                     />
                 </div>
@@ -154,8 +153,8 @@ function Usuario({ profileImageUrl, nombreU, datosU, coins, allCompletedCourses,
 
         <div id='nivel-center'>
             <div id='nivel-edit'>
-                <h3>Nivel</h3>
-                <progress value={level} max={maxLevels}></progress><span>{level}/{maxLevels}</span> 
+                <h3>PowerUps</h3>
+                <progress value={powerUps} max={maxPowerUps}></progress><span>{powerUps}/{maxPowerUps}</span> 
             </div>
             
         </div>

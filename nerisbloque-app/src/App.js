@@ -87,7 +87,7 @@ function App() {
                 PromtE: userData.PromtE !== '' ? userData.PromtE : 'No especificado',
                 GITCO: userData.GITCO !== '' ? userData.GITCO : 'No especificado',
                 GITSEC: userData.GITSEC !== '' ? userData.GITSEC : 'No especificado',
-                level: userData.level,
+                powerUps: userData.powerUps,
                 score: userData.score,
                 rol:userData.rol
             });
@@ -125,7 +125,7 @@ function App() {
                 <Route path="/creaCuenta" element={<CreaCuenta />} />
                 <Route path="/game" element={<Game profileImageUrl={profileImageUrl} user={user} coins={userData ? userData.coins : 0} />} />
                 <Route path="/adminLog" element={<AdminLog />} />
-                <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} nombreU={userData ? userData.fullName : ""} datosU={userData ? userData.userData : ""} coins={userData ? userData.coins : 0} allCompletedCourses={userData ? userData.allCompletedCourses : 0} PromtE={userData ? userData.PromtE : 0} GITCO={userData ? userData.GITCO : 0} GITSEC={userData ? userData.GITSEC : 0} level={userData ? userData.level : 0}/>} />
+                <Route path="/usuario" element={<Usuario profileImageUrl={profileImageUrl} nombreU={userData ? userData.fullName : ""} datosU={userData ? userData.userData : ""} coins={userData ? userData.coins : 0} allCompletedCourses={userData ? userData.allCompletedCourses : 0} PromtE={userData ? userData.PromtE : 0} GITCO={userData ? userData.GITCO : 0} GITSEC={userData ? userData.GITSEC : 0} powerUps={userData ? userData.powerUps : 0}/>} />
                 <Route path="/edit" element={<EditP user={user} profileImageUrl={profileImageUrl} setProfileImageUrl={setProfileImageUrl} nombreU={userData ? userData.fullName : ""} setNombreU={(nombre) => setUserData({...userData, fullName: nombre})} datosU={userData ? userData.userData : ""} setDatosU={(datos) => setUserData({...userData, userData: datos})} userData={userData} setUserData={setUserData} />} />
                 <Route path="/adminView" element={<AdminView />} />
                 <Route path="/rewards" element={<Rewards profileImageUrl={profileImageUrl} coins={userData ? userData.coins : 0}/>} />

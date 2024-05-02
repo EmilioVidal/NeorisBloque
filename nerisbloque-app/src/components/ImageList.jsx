@@ -5,6 +5,7 @@ import { getDatabase, ref as databaseRef, set, get } from 'firebase/database';
 
 const ImageList = () => {
     const [imageList, setImageList] = useState([]);
+    const maxPowerUps = 3;//aqui estan el total de power ups disponibles
 
     useEffect(() => {
         const imageListRef = storageRef(storage, 'images/');
@@ -67,10 +68,16 @@ const ImageList = () => {
                 const snapshot = await get(userRef);
                 const userData = snapshot.val();
                 let currentCount = userData[courseName] || 0;
+                let totalC = userData.allCompletedCourses || 0;
+                let totalPowerUps = userData.powerUps || 0;
                 currentCount += 1; // Incrementar el valor del curso
-                await set(userRef, { ...userData, [courseName]: currentCount });
+                totalC += 1; // Incrementar el valor total de los cursos
+                if(totalC <= maxPowerUps){
+                    totalPowerUps = totalC;
+                }
+                await set(userRef, { ...userData, [courseName]: currentCount, allCompletedCourses: totalC, powerUps: totalPowerUps});
             
-                console.log('Valor en la base de datos actualizado correctamente.');
+                console.log('Valor en la base de datos actualizado correctamente.', userData.allCompletedCourses, totalC);
                 alert("Se envió correctamente la evaluación");
             } catch (error) {
                 console.error('Error al actualizar los metadatos:', error);

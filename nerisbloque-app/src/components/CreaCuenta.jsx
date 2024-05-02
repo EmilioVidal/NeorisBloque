@@ -18,9 +18,9 @@ function CreaCuenta() {
     const GITCO = 0;
     const GITSEC = 0;
     const score = 0;
-    const level = 0;
+    const powerUps = 0;
     const rol = 'user';
-    const allCompletedCourses = 6;
+    const allCompletedCourses = 0;
     const userData = event.target.datos.value;
 
     if (password !== confirmPassword) {
@@ -44,7 +44,7 @@ function CreaCuenta() {
         PromtE: PromtE,
         GITCO: GITCO,
         GITSEC: GITSEC,
-        level: level,
+        powerUps: powerUps,
         score: score,
         rol: rol
       });
