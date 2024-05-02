@@ -60,7 +60,7 @@ function HighScore() {
                 <div>
                     <div className="filtro-botones">
                         <button onClick={() => handleFilterChange('coins')}>Filtrar por Monedas</button>
-                        <button onClick={() => handleFilterChange('level')}>Filtrar por Nivel</button>
+                        <button onClick={() => handleFilterChange('powerUps')}>Filtrar por Nivel</button>
                         <button onClick={() => handleFilterChange('score')}>Filtrar por Distancia</button>
                     </div>
                 </div>
