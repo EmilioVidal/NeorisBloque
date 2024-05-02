@@ -37,6 +37,7 @@ const UserList = () => {
             allCompletedCourses: data[key].allCompletedCourses,
             level: data[key].level,
             score: data[key].score,
+            rol: data[key].rol,
             lastLogin: data[key].lastLogin ? format(new Date(data[key].lastLogin), 'yyyy-MM-dd HH:mm:ss') : ''
           });
         }
@@ -106,10 +107,10 @@ const UserList = () => {
     (!filterCourse || (user.allCompletedCourses != null && user.allCompletedCourses >= parseInt(filterCourse))) && // Filtrar todos los cursos completados mayores o iguales
     (!filterLevel || (user.level != null && user.level >= parseInt(filterLevel))) && // Filtrar nivel mayor o igual
     (!filterScore || (user.score != null && user.score >= parseInt(filterScore))) && // Filtrar puntuación mayor o igual
+    (!user.rol || user.rol.toLowerCase() !== 'admin') &&
     (!filterDate || (user.lastLogin && user.lastLogin.startsWith(filterDate)))
   );
   
-
   return (
     <div className="user-list-container">
       <div className="filter-buttons">
@@ -176,6 +177,7 @@ const UserList = () => {
         </thead>
         <tbody>
           {filteredUsers.map((user, index) => (
+            user.rol && user.rol.toLowerCase() !== 'admin' &&
             <tr key={index}>
               <td>{typeof user.email === 'string' ? user.email : 'Correo no disponible'}</td>
               <td>{typeof user.fullName === 'string' ? user.fullName : 'Nombre no disponible'}</td>
