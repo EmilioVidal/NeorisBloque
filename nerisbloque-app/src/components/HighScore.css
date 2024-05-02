@@ -1,5 +1,5 @@
-.HS-heading{
-    font-size: 40px;
+.HS-heading {
+    font-size: 24px; /* Reducir el tamaño de fuente del encabezado */
     margin: 4px;
     text-align: center;
     color: #1B242A;
@@ -12,16 +12,20 @@
 }
 
 .filtro-botones button{
+    width: 100px;
     background-color: #EF3FA9;
     color: white;
     padding: 5px;
 }
 
-.highS-table{
+
+.highS-table {
+    font-size: 14px; /* Reducir el tamaño de fuente de la tabla */
     border-collapse: collapse;
     background-color: #1E242B;
     color: white;
-    height: fit-content;
+    max-width: 100%; /* Ajustar el ancho máximo para dispositivos más pequeños */
+    overflow-x: auto; /* Agregar desplazamiento horizontal en dispositivos pequeños */
     box-shadow: 0 0 10px 0 #1B242A;
 }
 
@@ -30,4 +34,15 @@
   padding: 8px;
   border: 1px solid #ddd;
   text-align: center;
+}
+
+/* Media query para dispositivos con pantallas pequeñas */
+@media screen and (max-width: 600px) {
+    .HS-heading {
+        font-size: 18px; /* Reducir el tamaño de fuente del encabezado en dispositivos pequeños */
+    }
+
+    .highS-table {
+        font-size: 12px; /* Reducir el tamaño de fuente de la tabla en dispositivos pequeños */
+    }
 }
