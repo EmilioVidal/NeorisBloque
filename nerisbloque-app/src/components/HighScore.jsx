@@ -50,7 +50,8 @@ function HighScore() {
 
     const filteredUsers = sortedUsers.filter(user =>
         (!filterValue || (user[activeFilter] && user[activeFilter].toString().startsWith(filterValue))) &&
-        user.rol !== 'admin'
+        user.rol !== 'admin' &&
+        user.fullName !== undefined
     );
 
     return (
