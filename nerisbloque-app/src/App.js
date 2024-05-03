@@ -11,6 +11,7 @@ import Upload from "./components/Upload"
 import React, {useState, useEffect} from 'react';
 import userImage from './img/User.png';
 import UserList from './components/UserList';
+import GameIframe from './components/GameIframe';
 import './App.css';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { database } from './API/FirebaseConfig'; // Asegúrate de que la ruta es correcta
@@ -131,6 +132,7 @@ function App() {
                 <Route path="/rewards" element={<Rewards profileImageUrl={profileImageUrl} coins={userData ? userData.coins : 0}/>} />
                 <Route path="/upload" element={<Upload profileImageUrl={profileImageUrl}/>} />
                 <Route path="/users" element={<UserList />} /> {/* Pasar las variables nombre y datos como props */}
+                <Route path="/gameIframe" element={<GameIframe profileImageUrl={profileImageUrl} />} />
                 <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
         </BrowserRouter>

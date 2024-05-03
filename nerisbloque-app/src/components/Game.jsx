@@ -39,7 +39,7 @@ const Game = ({profileImageUrl, user, coins}) => {
                     borderRadius: '10px',
                 }}>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <Link to={"/game"}>
+                    <Link to={"/gameIframe"}>
                     <Button sx={{ bgcolor: 'black', width: '200px', color: 'white', margin: '10px'}}>
                         Jugar
                     </Button>
