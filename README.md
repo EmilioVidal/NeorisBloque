@@ -1,4 +1,4 @@
-## Equipo 3
+![image](https://github.com/EmilioVidal/Reto-Bloque/assets/110851981/69689322-54ea-4d07-bb50-8ada8d1da902)## Equipo 3
 -Edgar Patricio Olalde Sepúlveda - A01424082
 -Diego de Jesús Esparza Ruiz  - A00837527
 -Luis Gerardo Juárez García - A00836928 
@@ -20,3 +20,9 @@ El equipo ha creado una web dinámica con el objetivo de incentivar a los emplea
 
 ## Recorido por las paginas y su funcionamiento 
 ### Login
+En esta primera pagina el empleado de NEORIS podria inciar sesión si es que ya cuenta con una (si quiere probarlo usar gera@tec.mx 123456)
+![image](https://github.com/EmilioVidal/Reto-Bloque/assets/110851981/a14d4f81-e353-40b6-ad9d-e006a73e1f20)
+
+### Registrarte
+Esta pagina es para los nuevos usarios con la cual llenando la información que pide pueden crear una cuenta que se guardara en la base de datos
+![image](https://github.com/EmilioVidal/Reto-Bloque/assets/110851981/78576c05-9928-4944-95c3-4d41788912ec)
