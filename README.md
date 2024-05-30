@@ -17,10 +17,8 @@ Este projecto fue desarollado para la empresa de Neoris la cual nos pidio integr
 
 ##Descripción
 #
-El equipo ha creado una web dinámica con el objetivo de incentivar a los empleados de Neoris a completar los cursos requeridos por la empresa. Esta solución incluye un juego interactivo que permite a los empleados divertirse mientras aprenden, haciendo el proceso de formación más atractivo y motivador.
+El equipo ha creado una web dinámica con el objetivo de incentivar a los empleados de Neoris a completar los cursos requeridos por la empresa. Esta solución incluye un juego interactivo que permite a los empleados divertirse mientras aprenden, haciendo el proceso de formación más atractivo y motivador. Las tecnologías Utilizadas fueron React para la creación de una interfaz de usuario interactiva y eficiente, JavaScript para la lógica y funcionalidad del frontend, Firebase Realtime Database para el almacenamiento y la sincronización en tiempo real de datos unity: Para el desarrollo del videojuego.
 
-Tecnologías Utilizadas
-React: Para la creación de una interfaz de usuario interactiva y eficiente.
-JavaScript: Para la lógica y funcionalidad del frontend.
-Firebase Realtime Database: Para el almacenamiento y la sincronización en tiempo real de datos.
-Unity: Para el desarrollo del videojuego
+##Recorido por las paginas y su funcionamiento 
+#
+###Login
