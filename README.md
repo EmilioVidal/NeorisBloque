@@ -1,4 +1,4 @@
-![image](https://github.com/EmilioVidal/Reto-Bloque/assets/110851981/69689322-54ea-4d07-bb50-8ada8d1da902)## Equipo 3
+## Equipo 3
 -Edgar Patricio Olalde Sepúlveda - A01424082
 -Diego de Jesús Esparza Ruiz  - A00837527
 -Luis Gerardo Juárez García - A00836928 
