@@ -11,3 +11,16 @@ Video:
 https://drive.google.com/file/d/11QqTkXeHi-mE1CiqE6R7yfrGqrl-AiHn/view?usp=sharing 
 
 Página Web: videojuego-fd243.firebaseapp.com
+#
+##Neoris App
+Este projecto fue desarollado para la empresa de Neoris la cual nos pidio integrar una pagina web y un videojuego con el cual incitemos a sus empleados a tomar los cursos que pide la empresa
+
+##Descripción
+#
+El equipo ha creado una web dinámica con el objetivo de incentivar a los empleados de Neoris a completar los cursos requeridos por la empresa. Esta solución incluye un juego interactivo que permite a los empleados divertirse mientras aprenden, haciendo el proceso de formación más atractivo y motivador.
+
+Tecnologías Utilizadas
+React: Para la creación de una interfaz de usuario interactiva y eficiente.
+JavaScript: Para la lógica y funcionalidad del frontend.
+Firebase Realtime Database: Para el almacenamiento y la sincronización en tiempo real de datos.
+Unity: Para el desarrollo del videojuego
